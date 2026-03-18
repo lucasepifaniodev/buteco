@@ -46,8 +46,8 @@
     .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border2); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; }
     .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
     .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .search-wrap { margin-bottom: 1rem; position: relative; }
-    #search { width: 100%; padding: 9px 12px 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface); color: var(--text); outline: none; transition: border-color 0.15s; }
+    .search-wrap { margin-bottom: 1rem; }
+    #search { width: 100%; padding: 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface); color: var(--text); outline: none; transition: border-color 0.15s; }
     #search:focus { border-color: var(--accent); }
     #search::placeholder { color: var(--text3); }
     .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
@@ -145,48 +145,49 @@
   const SHEET_ID   = '13nvmfaI0ttiaVG7Ej7gcd44cclo6K7OfmatoO9oqkSA';
   const SHEET_NAME = 'Convidados';
 
-  // Nomes EXATOS das colunas na planilha
-  const COL_NOME     = 'NOMES';
-  const COL_PRESENCA = 'PRESENÇA';
-  const COL_CHOPP    = 'VAI BEBER CHOPP?';
-  const COL_PAGOU    = 'PAGOU O CHOOP';
+  // A planilha tem cabeçalho na linha 3 e dados a partir da coluna C.
+  // Usamos range=C3:F999 para pular as linhas extras e colunas A/B.
+  // Índices das colunas no range (0=NOMES, 1=PRESENÇA, 2=VAI BEBER CHOPP?, 3=PAGOU O CHOOP)
+  const I_NOME     = 0;
+  const I_PRESENCA = 1;
+  const I_CHOPP    = 2;
+  const I_PAGOU    = 3;
 
   let todos = [];
   let filtroAtual = 'todos';
 
   const norm = v => (v || '').toString().trim();
 
-  const isConfirmado = r => norm(r[COL_PRESENCA]) === 'Sim';
-  const isPendente   = r => norm(r[COL_PRESENCA]) === 'Não respondeu' || norm(r[COL_PRESENCA]) === '';
-  const isNaoVai     = r => norm(r[COL_PRESENCA]) === 'Não';
-  const isPagou      = r => norm(r[COL_PAGOU]) === 'Sim';
-  const isNaoPagou   = r => norm(r[COL_PAGOU]) !== 'Sim' && norm(r[COL_PAGOU]) !== '';
-  const isSemChopp   = r => norm(r[COL_CHOPP]) === 'Não' || norm(r[COL_CHOPP]) === 'Não Vai beber';
+  const isConfirmado = r => norm(r[I_PRESENCA]) === 'Sim';
+  const isPendente   = r => norm(r[I_PRESENCA]) === 'Não respondeu' || norm(r[I_PRESENCA]) === '';
+  const isPagou      = r => norm(r[I_PAGOU]) === 'Sim';
+  const isNaoPagou   = r => norm(r[I_PAGOU]) !== 'Sim' && norm(r[I_PAGOU]) !== '';
+  const isSemChopp   = r => norm(r[I_CHOPP]) === 'Não' || norm(r[I_CHOPP]) === 'Não Vai beber';
 
   function badgePresenca(val) {
     const v = norm(val);
-    if (v === 'Sim')            return '<span class="badge badge-green">Confirmado</span>';
-    if (v === 'Não')            return '<span class="badge badge-red">Não vai</span>';
-    if (v === 'Não respondeu')  return '<span class="badge badge-amber">Sem resposta</span>';
+    if (v === 'Sim')           return '<span class="badge badge-green">Confirmado</span>';
+    if (v === 'Não')           return '<span class="badge badge-red">Não vai</span>';
+    if (v === 'Não respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
     return '<span class="badge badge-amber">Sem resposta</span>';
   }
 
   function badgePagou(val) {
     const v = norm(val);
-    if (v === 'Sim')            return '<span class="badge badge-blue">Pago</span>';
-    if (v === 'Não')            return '<span class="badge badge-red">Pendente</span>';
-    if (v === 'Não respondeu')  return '<span class="badge badge-amber">Sem resposta</span>';
-    if (v === 'Não Vai beber')  return '<span class="badge badge-gray">N/A</span>';
-    if (!v)                     return '<span class="badge badge-gray">—</span>';
+    if (v === 'Sim')           return '<span class="badge badge-blue">Pago</span>';
+    if (v === 'Não')           return '<span class="badge badge-red">Pendente</span>';
+    if (v === 'Não respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
+    if (v === 'Não Vai beber') return '<span class="badge badge-gray">N/A</span>';
+    if (!v)                    return '<span class="badge badge-gray">—</span>';
     return `<span class="badge badge-gray">${v}</span>`;
   }
 
   function badgeChopp(val) {
     const v = norm(val);
-    if (v === 'Sim')            return '<span class="badge badge-green">Sim</span>';
-    if (v === 'Não')            return '<span class="badge badge-red">Não bebe</span>';
-    if (v === 'Não Vai beber')  return '<span class="badge badge-red">Não bebe</span>';
-    if (v === 'Não respondeu')  return '<span class="badge badge-amber">Sem resposta</span>';
+    if (v === 'Sim')           return '<span class="badge badge-green">Sim</span>';
+    if (v === 'Não')           return '<span class="badge badge-red">Não bebe</span>';
+    if (v === 'Não Vai beber') return '<span class="badge badge-red">Não bebe</span>';
+    if (v === 'Não respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
     return '<span class="badge badge-gray">—</span>';
   }
 
@@ -206,7 +207,7 @@
     else if (filtroAtual === 'nao-pagaram') dados = dados.filter(isNaoPagou);
     else if (filtroAtual === 'semchopp')    dados = dados.filter(isSemChopp);
 
-    if (busca) dados = dados.filter(r => norm(r[COL_NOME]).toLowerCase().includes(busca));
+    if (busca) dados = dados.filter(r => norm(r[I_NOME]).toLowerCase().includes(busca));
 
     const tbody = document.getElementById('tbody');
     if (!dados.length) {
@@ -216,42 +217,45 @@
 
     tbody.innerHTML = dados.map(r => `
       <tr>
-        <td title="${norm(r[COL_NOME])}">${norm(r[COL_NOME]) || '—'}</td>
-        <td>${badgePresenca(r[COL_PRESENCA])}</td>
-        <td>${badgePagou(r[COL_PAGOU])}</td>
-        <td>${badgeChopp(r[COL_CHOPP])}</td>
+        <td title="${norm(r[I_NOME])}">${norm(r[I_NOME]) || '—'}</td>
+        <td>${badgePresenca(r[I_PRESENCA])}</td>
+        <td>${badgePagou(r[I_PAGOU])}</td>
+        <td>${badgeChopp(r[I_CHOPP])}</td>
       </tr>`).join('');
   }
 
   async function loadData() {
     document.getElementById('header-meta').textContent = 'Atualizando...';
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+    // range=C3:F999 → pula linhas 1-2 e colunas A-B, lê cabeçalho na linha 3
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}&range=C3:F999`;
+
     try {
       const res  = await fetch(url);
       const text = await res.text();
       const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
 
-      const cols = json.table.cols.map(c => c.label);
-      todos = json.table.rows
-        .map(r => {
-          const obj = {};
-          r.c.forEach((cell, i) => { obj[cols[i]] = cell && cell.v !== null ? String(cell.v) : ''; });
-          return obj;
-        })
-        .filter(r => norm(r[COL_NOME]) !== '');
+      // Primeira linha do range é o cabeçalho (NOMES, PRESENÇA, VAI BEBER CHOPP?, PAGOU O CHOOP)
+      // A API gviz usa ela automaticamente como header quando há label
+      const rows = json.table.rows
+        .map(r => r.c.map(cell => cell && cell.v !== null ? String(cell.v) : ''))
+        .filter(r => r[I_NOME].trim() !== '' && r[I_NOME].trim() !== 'NOMES');
 
-      document.getElementById('sn-total').textContent       = todos.length;
-      document.getElementById('sn-confirmados').textContent = todos.filter(isConfirmado).length;
-      document.getElementById('sn-pendentes').textContent   = todos.filter(isPendente).length;
-      document.getElementById('sn-pagaram').textContent     = todos.filter(isPagou).length;
-      document.getElementById('sn-semchopp').textContent    = todos.filter(isSemChopp).length;
+      todos = rows;
 
-      document.getElementById('header-meta').textContent = `${todos.length} convidados · sincronizado com a planilha`;
+      document.getElementById('sn-total').textContent       = rows.length;
+      document.getElementById('sn-confirmados').textContent = rows.filter(isConfirmado).length;
+      document.getElementById('sn-pendentes').textContent   = rows.filter(isPendente).length;
+      document.getElementById('sn-pagaram').textContent     = rows.filter(isPagou).length;
+      document.getElementById('sn-semchopp').textContent    = rows.filter(isSemChopp).length;
+
+      document.getElementById('header-meta').textContent = `${rows.length} convidados · sincronizado com a planilha`;
       document.getElementById('footer-info').textContent = 'Última atualização: ' + new Date().toLocaleString('pt-BR');
       renderTabela();
     } catch (e) {
       document.getElementById('header-meta').textContent = 'Erro ao carregar. Verifique o acesso à planilha.';
-      document.getElementById('tbody').innerHTML = '<tr><td colspan="4" class="empty">Não foi possível carregar os dados.<br><small>Certifique-se que a planilha está com acesso "qualquer pessoa com o link pode visualizar".</small></td></tr>';
+      document.getElementById('tbody').innerHTML =
+        '<tr><td colspan="4" class="empty">Não foi possível carregar os dados.<br><small>Certifique-se que a planilha está com acesso "qualquer pessoa com o link pode visualizar".</small></td></tr>';
     }
   }
 
