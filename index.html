@@ -15,6 +15,7 @@
       --amber-bg: #FAEEDA; --amber-text: #633806;
       --blue-bg:  #E6F1FB; --blue-text:  #0C447C;
       --red-bg:   #FCEBEB; --red-text:   #791F1F;
+      --orange-bg:#FEF0E6; --orange-text:#7A3A10;
       --accent: #1A1814;
     }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
@@ -24,28 +25,35 @@
     .header-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; }
     header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3rem); color: #fff; font-weight: 400; line-height: 1.1; }
     header h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
-    .header-meta { margin-top: 1rem; font-size: 13px; color: rgba(255,255,255,0.4); }
-    .header-actions { margin-top: 1.5rem; }
+    .header-bottom { margin-top: 1rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .header-meta { font-size: 13px; color: rgba(255,255,255,0.4); flex: 1; }
+    .auto-badge { font-size: 11px; color: rgba(255,255,255,0.35); display: flex; align-items: center; gap: 5px; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .header-actions { margin-top: 1rem; }
     .btn { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; transition: transform 0.1s; }
     .btn:active { transform: scale(0.98); }
     .btn-light { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
     .btn-light:hover { background: rgba(255,255,255,0.18); }
     main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 2rem; }
     .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; transition: border-color 0.15s, transform 0.1s; }
     .stat:hover { border-color: var(--border2); }
     .stat:active { transform: scale(0.98); }
     .stat.active { border-color: var(--accent); border-width: 1.5px; }
-    .stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+    .stat-label { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; line-height: 1.3; }
     .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; line-height: 1; }
     .stat.s-confirmados .stat-num { color: #27500A; }
     .stat.s-pendentes   .stat-num { color: #633806; }
     .stat.s-pagaram     .stat-num { color: #0C447C; }
     .stat.s-semchopp    .stat-num { color: #791F1F; }
+    .stat.s-bebenaopagou .stat-num { color: #7A3A10; }
     .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
-    .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border2); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; }
+    .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border2); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
     .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
     .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .filter-btn.destaque { border-color: #7A3A10; color: #7A3A10; }
+    .filter-btn.destaque.active { background: #7A3A10; color: #fff; border-color: #7A3A10; }
     .search-wrap { margin-bottom: 1rem; }
     #search { width: 100%; padding: 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface); color: var(--text); outline: none; transition: border-color 0.15s; }
     #search:focus { border-color: var(--accent); }
@@ -60,13 +68,15 @@
     tr:last-child td { border-bottom: none; }
     tr:hover td { background: var(--surface2); }
     .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
-    .badge-green { background: var(--green-bg); color: var(--green-text); }
-    .badge-amber { background: var(--amber-bg); color: var(--amber-text); }
-    .badge-blue  { background: var(--blue-bg);  color: var(--blue-text);  }
-    .badge-red   { background: var(--red-bg);   color: var(--red-text);   }
-    .badge-gray  { background: var(--surface2); color: var(--text3);      }
+    .badge-green  { background: var(--green-bg);  color: var(--green-text); }
+    .badge-amber  { background: var(--amber-bg);  color: var(--amber-text); }
+    .badge-blue   { background: var(--blue-bg);   color: var(--blue-text);  }
+    .badge-red    { background: var(--red-bg);     color: var(--red-text);   }
+    .badge-orange { background: var(--orange-bg);  color: var(--orange-text);}
+    .badge-gray   { background: var(--surface2);   color: var(--text3);      }
     .empty { padding: 3rem; text-align: center; color: var(--text3); font-size: 14px; }
     .footer-info { margin-top: 10px; font-size: 11px; color: var(--text3); text-align: right; }
+    .countdown { font-size: 11px; color: var(--text3); margin-top: 4px; text-align: right; }
     @media (max-width: 600px) {
       .stats { grid-template-columns: repeat(3, 1fr); }
       th:nth-child(4), td:nth-child(4) { display: none; }
@@ -79,9 +89,12 @@
   <div class="header-inner">
     <div class="header-tag">Aniversário Mari &amp; Epi</div>
     <h1>Lista de <em>convidados</em></h1>
-    <div class="header-meta" id="header-meta">Carregando dados...</div>
+    <div class="header-bottom">
+      <div class="header-meta" id="header-meta">Carregando dados...</div>
+      <div class="auto-badge"><span class="dot"></span> atualização automática</div>
+    </div>
     <div class="header-actions">
-      <button class="btn btn-light" onclick="loadData()">&#8635; Atualizar</button>
+      <button class="btn btn-light" onclick="loadData(true)">&#8635; Atualizar agora</button>
     </div>
   </div>
 </header>
@@ -108,6 +121,10 @@
       <div class="stat-label">Sem chopp</div>
       <div class="stat-num" id="sn-semchopp">—</div>
     </div>
+    <div class="stat s-bebenaopagou" onclick="setFiltro('bebe-nao-pagou')" data-f="bebe-nao-pagou">
+      <div class="stat-label">Bebe &amp; não pagou</div>
+      <div class="stat-num" id="sn-bebenaopagou">—</div>
+    </div>
   </div>
 
   <div class="search-wrap">
@@ -121,6 +138,7 @@
     <button class="filter-btn" onclick="setFiltro('pagaram')" data-f="pagaram">Pagaram</button>
     <button class="filter-btn" onclick="setFiltro('nao-pagaram')" data-f="nao-pagaram">Não pagaram</button>
     <button class="filter-btn" onclick="setFiltro('semchopp')" data-f="semchopp">Sem chopp</button>
+    <button class="filter-btn destaque" onclick="setFiltro('bebe-nao-pagou')" data-f="bebe-nao-pagou">🍺 Bebe e não pagou</button>
   </div>
 
   <div class="table-wrap">
@@ -139,30 +157,33 @@
     </table>
   </div>
   <div class="footer-info" id="footer-info"></div>
+  <div class="countdown" id="countdown"></div>
 </main>
 
 <script>
-  // ── Configuração ─────────────────────────────────────────
   const SHEET_ID = '13nvmfaI0ttiaVG7Ej7gcd44cclo6K7OfmatoO9oqkSA';
-  const GID      = '0'; // ID numérico da aba "Convidados" (padrão = 0)
+  const GID      = '0';
 
-  // Índices das colunas no CSV (C=2, D=3, E=4, F=5 → base 0)
+  // Índices das colunas no CSV (base 0): C=2, D=3, E=4, F=5
   const I_NOME = 2, I_PRESENCA = 3, I_CHOPP = 4, I_PAGOU = 5;
-  // ─────────────────────────────────────────────────────────
+
+  // Atualização automática a cada 2 minutos
+  const AUTO_REFRESH_MS = 2 * 60 * 1000;
 
   let todos = [];
   let filtroAtual = 'todos';
+  let countdownSec = AUTO_REFRESH_MS / 1000;
+  let countdownInterval = null;
 
   const norm = v => (v || '').toString().trim();
 
-  const isConfirmado = r => norm(r[I_PRESENCA]) === 'Sim';
-  const isPendente   = r => {
-    const v = norm(r[I_PRESENCA]);
-    return v === 'Não respondeu' || v === '';
-  };
-  const isPagou    = r => norm(r[I_PAGOU]) === 'Sim';
-  const isNaoPagou = r => norm(r[I_PAGOU]) !== 'Sim' && norm(r[I_PAGOU]) !== '';
-  const isSemChopp = r => norm(r[I_CHOPP]) === 'Não' || norm(r[I_CHOPP]) === 'Não Vai beber';
+  const isConfirmado  = r => norm(r[I_PRESENCA]) === 'Sim';
+  const isPendente    = r => { const v = norm(r[I_PRESENCA]); return v === 'Não respondeu' || v === ''; };
+  const isPagou       = r => norm(r[I_PAGOU]) === 'Sim';
+  const isNaoPagou    = r => norm(r[I_PAGOU]) !== 'Sim' && norm(r[I_PAGOU]) !== '';
+  const isSemChopp    = r => norm(r[I_CHOPP]) === 'Não' || norm(r[I_CHOPP]) === 'Não Vai beber';
+  const bebeChopp     = r => norm(r[I_CHOPP]) === 'Sim';
+  const isBebeNaoPagou = r => bebeChopp(r) && !isPagou(r) && norm(r[I_PAGOU]) !== '';
 
   function badgePresenca(val) {
     const v = norm(val);
@@ -174,11 +195,11 @@
 
   function badgePagou(val) {
     const v = norm(val);
-    if (v === 'Sim')                                   return '<span class="badge badge-blue">Pago</span>';
-    if (v === 'Não')                                   return '<span class="badge badge-red">Pendente</span>';
+    if (v === 'Sim')                                    return '<span class="badge badge-blue">Pago</span>';
+    if (v === 'Não')                                    return '<span class="badge badge-red">Pendente</span>';
     if (v === 'Não respondeu' || v === 'Não Respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
-    if (v === 'Não Vai beber')                         return '<span class="badge badge-gray">N/A</span>';
-    if (!v)                                            return '<span class="badge badge-gray">—</span>';
+    if (v === 'Não Vai beber')                          return '<span class="badge badge-gray">N/A</span>';
+    if (!v)                                             return '<span class="badge badge-gray">—</span>';
     return `<span class="badge badge-gray">${v}</span>`;
   }
 
@@ -192,10 +213,8 @@
   }
 
   function parseCSV(text) {
-    const lines = text.split(/\r?\n/);
-    return lines.map(line => {
-      const cols = [];
-      let cur = '', inQ = false;
+    return text.split(/\r?\n/).map(line => {
+      const cols = []; let cur = '', inQ = false;
       for (let i = 0; i < line.length; i++) {
         const ch = line[i];
         if (ch === '"') { inQ = !inQ; }
@@ -217,11 +236,12 @@
     const busca = (document.getElementById('search').value || '').toLowerCase().trim();
     let dados = todos;
 
-    if      (filtroAtual === 'confirmados') dados = dados.filter(isConfirmado);
-    else if (filtroAtual === 'pendentes')   dados = dados.filter(isPendente);
-    else if (filtroAtual === 'pagaram')     dados = dados.filter(isPagou);
-    else if (filtroAtual === 'nao-pagaram') dados = dados.filter(isNaoPagou);
-    else if (filtroAtual === 'semchopp')    dados = dados.filter(isSemChopp);
+    if      (filtroAtual === 'confirmados')   dados = dados.filter(isConfirmado);
+    else if (filtroAtual === 'pendentes')     dados = dados.filter(isPendente);
+    else if (filtroAtual === 'pagaram')       dados = dados.filter(isPagou);
+    else if (filtroAtual === 'nao-pagaram')   dados = dados.filter(isNaoPagou);
+    else if (filtroAtual === 'semchopp')      dados = dados.filter(isSemChopp);
+    else if (filtroAtual === 'bebe-nao-pagou') dados = dados.filter(isBebeNaoPagou);
 
     if (busca) dados = dados.filter(r => norm(r[I_NOME]).toLowerCase().includes(busca));
 
@@ -240,11 +260,27 @@
       </tr>`).join('');
   }
 
-  async function loadData() {
-    document.getElementById('header-meta').textContent = 'Atualizando...';
+  function startCountdown() {
+    countdownSec = AUTO_REFRESH_MS / 1000;
+    if (countdownInterval) clearInterval(countdownInterval);
+    countdownInterval = setInterval(() => {
+      countdownSec--;
+      const min = Math.floor(countdownSec / 60);
+      const sec = countdownSec % 60;
+      document.getElementById('countdown').textContent =
+        `Próxima atualização automática em ${min}:${String(sec).padStart(2,'0')}`;
+      if (countdownSec <= 0) {
+        clearInterval(countdownInterval);
+        loadData(false);
+      }
+    }, 1000);
+  }
 
-    // Exporta a aba como CSV — sem CORS, sempre funciona em planilhas públicas
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
+  async function loadData(manual = false) {
+    if (manual) document.getElementById('header-meta').textContent = 'Atualizando...';
+
+    // Exporta CSV com cache-bust para garantir dados frescos
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}&t=${Date.now()}`;
 
     try {
       const res  = await fetch(url);
@@ -252,22 +288,24 @@
       const text = await res.text();
       const rows = parseCSV(text);
 
-      // Linha 3 (índice 2) = cabeçalho: [Sim, '', NOMES, PRESENÇA, VAI BEBER CHOPP?, PAGOU O CHOOP]
-      // Dados começam na linha 4 (índice 3)
       todos = rows
-        .slice(3)                                        // pula linhas 1-3
-        .filter(r => norm(r[I_NOME]) !== '')             // ignora linhas vazias
-        .filter(r => norm(r[I_NOME]) !== 'NOMES');       // ignora linha de cabeçalho duplicada
+        .slice(3)
+        .filter(r => norm(r[I_NOME]) !== '' && norm(r[I_NOME]) !== 'NOMES');
 
-      document.getElementById('sn-total').textContent       = todos.length;
-      document.getElementById('sn-confirmados').textContent = todos.filter(isConfirmado).length;
-      document.getElementById('sn-pendentes').textContent   = todos.filter(isPendente).length;
-      document.getElementById('sn-pagaram').textContent     = todos.filter(isPagou).length;
-      document.getElementById('sn-semchopp').textContent    = todos.filter(isSemChopp).length;
+      document.getElementById('sn-total').textContent        = todos.length;
+      document.getElementById('sn-confirmados').textContent  = todos.filter(isConfirmado).length;
+      document.getElementById('sn-pendentes').textContent    = todos.filter(isPendente).length;
+      document.getElementById('sn-pagaram').textContent      = todos.filter(isPagou).length;
+      document.getElementById('sn-semchopp').textContent     = todos.filter(isSemChopp).length;
+      document.getElementById('sn-bebenaopagou').textContent = todos.filter(isBebeNaoPagou).length;
 
-      document.getElementById('header-meta').textContent = `${todos.length} convidados · sincronizado com a planilha`;
-      document.getElementById('footer-info').textContent = 'Última atualização: ' + new Date().toLocaleString('pt-BR');
+      document.getElementById('header-meta').textContent =
+        `${todos.length} convidados · sincronizado com a planilha`;
+      document.getElementById('footer-info').textContent =
+        'Última atualização: ' + new Date().toLocaleString('pt-BR');
+
       renderTabela();
+      startCountdown();
     } catch (e) {
       console.error(e);
       document.getElementById('header-meta').textContent = 'Erro ao carregar dados.';
@@ -276,10 +314,11 @@
           Não foi possível carregar os dados.<br>
           <small>Verifique se a planilha está com acesso <strong>"qualquer pessoa com o link pode visualizar"</strong>.</small>
         </td></tr>`;
+      startCountdown();
     }
   }
 
-  loadData();
+  loadData(true);
 </script>
 </body>
 </html>
