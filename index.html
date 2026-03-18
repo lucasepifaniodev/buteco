@@ -145,13 +145,9 @@
   const SHEET_ID   = '13nvmfaI0ttiaVG7Ej7gcd44cclo6K7OfmatoO9oqkSA';
   const SHEET_NAME = 'Convidados';
 
-  // A planilha tem cabeçalho na linha 3 e dados a partir da coluna C.
-  // Usamos range=C3:F999 para pular as linhas extras e colunas A/B.
-  // Índices das colunas no range (0=NOMES, 1=PRESENÇA, 2=VAI BEBER CHOPP?, 3=PAGOU O CHOOP)
-  const I_NOME     = 0;
-  const I_PRESENCA = 1;
-  const I_CHOPP    = 2;
-  const I_PAGOU    = 3;
+  // Lê C4:F999 — pula linhas 1-3 (título, vazia, cabeçalho) e colunas A-B
+  // Colunas por índice: 0=NOMES, 1=PRESENÇA, 2=VAI BEBER CHOPP?, 3=PAGOU O CHOOP
+  const I_NOME = 0, I_PRESENCA = 1, I_CHOPP = 2, I_PAGOU = 3;
 
   let todos = [];
   let filtroAtual = 'todos';
@@ -174,9 +170,9 @@
 
   function badgePagou(val) {
     const v = norm(val);
-    if (v === 'Sim')           return '<span class="badge badge-blue">Pago</span>';
-    if (v === 'Não')           return '<span class="badge badge-red">Pendente</span>';
-    if (v === 'Não respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
+    if (v === 'Sim')            return '<span class="badge badge-blue">Pago</span>';
+    if (v === 'Não')            return '<span class="badge badge-red">Pendente</span>';
+    if (v === 'Não respondeu' || v === 'Não Respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
     if (v === 'Não Vai beber') return '<span class="badge badge-gray">N/A</span>';
     if (!v)                    return '<span class="badge badge-gray">—</span>';
     return `<span class="badge badge-gray">${v}</span>`;
@@ -227,19 +223,18 @@
   async function loadData() {
     document.getElementById('header-meta').textContent = 'Atualizando...';
 
-    // range=C3:F999 → pula linhas 1-2 e colunas A-B, lê cabeçalho na linha 3
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}&range=C3:F999`;
+    // range=C4:F999 — começa na linha 4 (dados reais), colunas C a F
+    // headers=0 para NÃO usar nenhuma linha como cabeçalho, retorna tudo como dados
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}&range=C4:F999&headers=0`;
 
     try {
       const res  = await fetch(url);
       const text = await res.text();
       const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
 
-      // Primeira linha do range é o cabeçalho (NOMES, PRESENÇA, VAI BEBER CHOPP?, PAGOU O CHOOP)
-      // A API gviz usa ela automaticamente como header quando há label
       const rows = json.table.rows
-        .map(r => r.c.map(cell => cell && cell.v !== null ? String(cell.v) : ''))
-        .filter(r => r[I_NOME].trim() !== '' && r[I_NOME].trim() !== 'NOMES');
+        .map(r => r.c.map(cell => (cell && cell.v !== null) ? String(cell.v) : ''))
+        .filter(r => r[I_NOME].trim() !== '');
 
       todos = rows;
 
@@ -253,6 +248,7 @@
       document.getElementById('footer-info').textContent = 'Última atualização: ' + new Date().toLocaleString('pt-BR');
       renderTabela();
     } catch (e) {
+      console.error(e);
       document.getElementById('header-meta').textContent = 'Erro ao carregar. Verifique o acesso à planilha.';
       document.getElementById('tbody').innerHTML =
         '<tr><td colspan="4" class="empty">Não foi possível carregar os dados.<br><small>Certifique-se que a planilha está com acesso "qualquer pessoa com o link pode visualizar".</small></td></tr>';
