@@ -18,117 +18,105 @@
       --accent: #1A1814;
     }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-
     header { background: var(--accent); padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; }
-    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; border: 40px solid rgba(255,255,255,0.04); pointer-events: none; }
-    .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-    .header-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem; }
-    header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 5vw, 3rem); color: #fff; font-weight: 400; line-height: 1.1; }
-    header h1 em { font-style: italic; color: rgba(255,255,255,0.55); }
-    .header-row { margin-top: 1rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    #header-meta { font-size: 13px; color: rgba(255,255,255,0.4); flex: 1; min-width: 0; }
-    .live { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.35); white-space: nowrap; }
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: blink 2s infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
-    .header-actions { margin-top: 1.25rem; }
-    .btn { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; transition: transform .1s, opacity .15s; }
-    .btn:active { transform: scale(.98); }
-    .btn-ghost { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.18); }
-    .btn-ghost:hover { background: rgba(255,255,255,0.16); }
-
-    main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
-
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 2rem; }
-    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; transition: border-color .15s, transform .1s; user-select: none; }
-    .stat:hover { border-color: var(--border2); }
-    .stat.active { border: 1.5px solid var(--accent); }
-    .stat-label { font-size: 10px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; line-height: 1.35; }
-    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; line-height: 1; color: var(--text); }
-    .s-ok   .stat-num { color: #27500A; }
-    .s-wait .stat-num { color: #633806; }
-    .s-paid .stat-num { color: #0C447C; }
-    .s-nc   .stat-num { color: #791F1F; }
-    .s-warn .stat-num { color: #854F0B; }
-
-    .search-wrap { margin-bottom: 10px; }
-    #search { width: 100%; padding: 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface); color: var(--text); outline: none; }
-    #search:focus { border-color: var(--accent); }
-    #search::placeholder { color: var(--text3); }
-
-    .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
-    .pill { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; border: 1px solid var(--border2); background: var(--surface); color: var(--text2); cursor: pointer; transition: all .15s; white-space: nowrap; user-select: none; }
-    .pill:hover { border-color: var(--accent); color: var(--accent); }
-    .pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .pill.warn { border-color: #854F0B; color: #854F0B; }
-    .pill.warn.active { background: #854F0B; color: #fff; }
-
-    .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-    thead tr { background: var(--surface2); border-bottom: 1px solid var(--border); }
-    th { padding: 10px 14px; font-size: 11px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: var(--text3); text-align: left; }
-    th:not(:first-child) { text-align: center; }
-    td { padding: 11px 14px; font-size: 14px; border-bottom: 1px solid var(--border); color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    td:not(:first-child) { text-align: center; }
-    tr:last-child td { border-bottom: none; }
-    tbody tr:hover td { background: var(--surface2); }
-
-    .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
-    .b-green  { background: var(--green-bg); color: var(--green-text); }
-    .b-amber  { background: var(--amber-bg); color: var(--amber-text); }
-    .b-blue   { background: var(--blue-bg);  color: var(--blue-text);  }
-    .b-red    { background: var(--red-bg);   color: var(--red-text);   }
-    .b-gray   { background: var(--surface2); color: var(--text3);      }
-
-    .empty { padding: 3rem; text-align: center; color: var(--text3); font-size: 14px; }
-    .foot { margin-top: 10px; font-size: 11px; color: var(--text3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
-
-    @media (max-width: 580px) {
-      .stats { grid-template-columns: repeat(3, 1fr); }
-      th:nth-child(4), td:nth-child(4) { display: none; }
+    header::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; border-radius:50%; border:40px solid rgba(255,255,255,.04); pointer-events:none; }
+    .hi { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .tag { font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:.5rem; }
+    h1 { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,5vw,3rem); color:#fff; font-weight:400; line-height:1.1; }
+    h1 em { font-style:italic; color:rgba(255,255,255,.55); }
+    .hrow { margin-top:1rem; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    #hmeta { font-size:13px; color:rgba(255,255,255,.4); flex:1; min-width:0; }
+    .live { display:flex; align-items:center; gap:5px; font-size:11px; color:rgba(255,255,255,.35); white-space:nowrap; }
+    .dot { width:6px; height:6px; border-radius:50%; background:#4ade80; animation:blink 2s infinite; }
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+    .hact { margin-top:1.25rem; }
+    .btn { display:inline-flex; align-items:center; gap:6px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; padding:8px 16px; border-radius:6px; border:none; cursor:pointer; }
+    .btn-g { background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.18); }
+    .btn-g:hover { background:rgba(255,255,255,.16); }
+    main { max-width:900px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+    .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px; margin-bottom:2rem; }
+    .stat { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1rem; cursor:pointer; transition:border-color .15s; user-select:none; }
+    .stat:hover { border-color:var(--border2); }
+    .stat.active { border:1.5px solid var(--accent); }
+    .stat-label { font-size:10px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; color:var(--text3); margin-bottom:6px; line-height:1.35; }
+    .stat-num { font-family:'DM Serif Display',serif; font-size:2rem; line-height:1; color:var(--text); }
+    .s-ok .stat-num   { color:#27500A; }
+    .s-wait .stat-num { color:#633806; }
+    .s-paid .stat-num { color:#0C447C; }
+    .s-nc .stat-num   { color:#791F1F; }
+    .s-warn .stat-num { color:#854F0B; }
+    .sw { margin-bottom:10px; }
+    #search { width:100%; padding:9px 14px; font-family:'DM Sans',sans-serif; font-size:14px; border:1px solid var(--border2); border-radius:8px; background:var(--surface); color:var(--text); outline:none; }
+    #search:focus { border-color:var(--accent); }
+    #search::placeholder { color:var(--text3); }
+    .filters { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:1rem; }
+    .pill { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500; padding:5px 13px; border-radius:20px; border:1px solid var(--border2); background:var(--surface); color:var(--text2); cursor:pointer; transition:all .15s; white-space:nowrap; user-select:none; }
+    .pill:hover { border-color:var(--accent); color:var(--accent); }
+    .pill.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .pill.warn { border-color:#854F0B; color:#854F0B; }
+    .pill.warn.active { background:#854F0B; color:#fff; }
+    .tw { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+    table { width:100%; border-collapse:collapse; table-layout:fixed; }
+    thead tr { background:var(--surface2); border-bottom:1px solid var(--border); }
+    th { padding:10px 14px; font-size:11px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--text3); text-align:left; }
+    th:not(:first-child) { text-align:center; }
+    td { padding:11px 14px; font-size:14px; border-bottom:1px solid var(--border); color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    td:not(:first-child) { text-align:center; }
+    tr:last-child td { border-bottom:none; }
+    tbody tr:hover td { background:var(--surface2); }
+    .badge { display:inline-block; font-size:11px; font-weight:500; padding:3px 9px; border-radius:20px; }
+    .bg { background:var(--green-bg); color:var(--green-text); }
+    .ba { background:var(--amber-bg); color:var(--amber-text); }
+    .bb { background:var(--blue-bg);  color:var(--blue-text);  }
+    .br { background:var(--red-bg);   color:var(--red-text);   }
+    .bx { background:var(--surface2); color:var(--text3);      }
+    .empty { padding:3rem; text-align:center; color:var(--text3); font-size:14px; }
+    .foot { margin-top:10px; font-size:11px; color:var(--text3); display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px; }
+    .debug { margin-top:1rem; padding:1rem; background:#fff3cd; border:1px solid #ffc107; border-radius:8px; font-size:12px; font-family:monospace; display:none; }
+    @media(max-width:580px){
+      .stats{grid-template-columns:repeat(3,1fr);}
+      th:nth-child(4),td:nth-child(4){display:none;}
     }
   </style>
 </head>
 <body>
-
 <header>
-  <div class="header-inner">
-    <div class="header-tag">Aniversário Mari &amp; Epi</div>
+  <div class="hi">
+    <div class="tag">Aniversário Mari &amp; Epi</div>
     <h1>Lista de <em>convidados</em></h1>
-    <div class="header-row">
-      <div id="header-meta">Carregando...</div>
+    <div class="hrow">
+      <div id="hmeta">Carregando...</div>
       <div class="live"><span class="dot"></span>ao vivo</div>
     </div>
-    <div class="header-actions">
-      <button class="btn btn-ghost" onclick="loadData()">&#8635; Atualizar agora</button>
+    <div class="hact">
+      <button class="btn btn-g" onclick="loadData()">&#8635; Atualizar agora</button>
     </div>
   </div>
 </header>
 
 <main>
-  <div class="stats" id="stats">
-    <div class="stat active" data-f="todos"         onclick="setFiltro(this)"><div class="stat-label">Total</div><div class="stat-num" id="n0">—</div></div>
-    <div class="stat s-ok"   data-f="confirmados"   onclick="setFiltro(this)"><div class="stat-label">Confirmados</div><div class="stat-num" id="n1">—</div></div>
-    <div class="stat s-wait" data-f="pendentes"     onclick="setFiltro(this)"><div class="stat-label">Sem resposta</div><div class="stat-num" id="n2">—</div></div>
-    <div class="stat s-paid" data-f="pagaram"       onclick="setFiltro(this)"><div class="stat-label">Pagaram</div><div class="stat-num" id="n3">—</div></div>
-    <div class="stat s-nc"   data-f="semchopp"      onclick="setFiltro(this)"><div class="stat-label">Sem chopp</div><div class="stat-num" id="n4">—</div></div>
-    <div class="stat s-warn" data-f="bebe-nao-pagou" onclick="setFiltro(this)"><div class="stat-label">Bebe &amp; não pagou</div><div class="stat-num" id="n5">—</div></div>
+  <div class="stats">
+    <div class="stat active" data-f="todos"          onclick="setF(this)"><div class="stat-label">Total</div><div class="stat-num" id="n0">—</div></div>
+    <div class="stat s-ok"   data-f="confirmados"    onclick="setF(this)"><div class="stat-label">Confirmados</div><div class="stat-num" id="n1">—</div></div>
+    <div class="stat s-wait" data-f="pendentes"      onclick="setF(this)"><div class="stat-label">Sem resposta</div><div class="stat-num" id="n2">—</div></div>
+    <div class="stat s-paid" data-f="pagaram"        onclick="setF(this)"><div class="stat-label">Pagaram</div><div class="stat-num" id="n3">—</div></div>
+    <div class="stat s-nc"   data-f="semchopp"       onclick="setF(this)"><div class="stat-label">Sem chopp</div><div class="stat-num" id="n4">—</div></div>
+    <div class="stat s-warn" data-f="bebe-nao-pagou" onclick="setF(this)"><div class="stat-label">Bebe &amp; não pagou</div><div class="stat-num" id="n5">—</div></div>
   </div>
 
-  <div class="search-wrap">
-    <input id="search" type="text" placeholder="Buscar pelo nome..." oninput="render()" />
-  </div>
+  <div class="sw"><input id="search" type="text" placeholder="Buscar pelo nome..." oninput="render()"/></div>
 
   <div class="filters">
-    <button class="pill active" data-f="todos"          onclick="setFiltro(this)">Todos</button>
-    <button class="pill"        data-f="confirmados"    onclick="setFiltro(this)">Confirmados</button>
-    <button class="pill"        data-f="pendentes"      onclick="setFiltro(this)">Sem resposta</button>
-    <button class="pill"        data-f="pagaram"        onclick="setFiltro(this)">Pagaram</button>
-    <button class="pill"        data-f="nao-pagaram"    onclick="setFiltro(this)">Não pagaram</button>
-    <button class="pill"        data-f="semchopp"       onclick="setFiltro(this)">Sem chopp</button>
-    <button class="pill warn"   data-f="bebe-nao-pagou" onclick="setFiltro(this)">🍺 Bebe e não pagou</button>
+    <button class="pill active" data-f="todos"          onclick="setF(this)">Todos</button>
+    <button class="pill"        data-f="confirmados"    onclick="setF(this)">Confirmados</button>
+    <button class="pill"        data-f="pendentes"      onclick="setF(this)">Sem resposta</button>
+    <button class="pill"        data-f="pagaram"        onclick="setF(this)">Pagaram</button>
+    <button class="pill"        data-f="nao-pagaram"    onclick="setF(this)">Não pagaram</button>
+    <button class="pill"        data-f="semchopp"       onclick="setF(this)">Sem chopp</button>
+    <button class="pill warn"   data-f="bebe-nao-pagou" onclick="setF(this)">🍺 Bebe e não pagou</button>
   </div>
 
-  <div class="table-wrap">
+  <div class="tw">
     <table>
       <thead><tr>
         <th style="width:36%">Nome</th>
@@ -141,140 +129,171 @@
   </div>
 
   <div class="foot">
-    <span id="foot-upd"></span>
-    <span id="foot-cd"></span>
+    <span id="fupd"></span>
+    <span id="fcd"></span>
   </div>
+  <div class="debug" id="debug"></div>
 </main>
 
 <script>
-const SHEET_ID = '13nvmfaI0ttiaVG7Ej7gcd44cclo6K7OfmatoO9oqkSA';
-const GID      = '0';
-const REFRESH  = 120; // segundos
+const ID = '13nvmfaI0ttiaVG7Ej7gcd44cclo6K7OfmatoO9oqkSA';
+const REFRESH = 120;
 
-// Índices no CSV (colunas A=0 B=1 C=2 D=3 E=4 F=5)
-const iNome = 2, iPres = 3, iChopp = 4, iPagou = 5;
+// Índices das colunas no CSV: A=0,B=1,C=2,D=3,E=4,F=5
+// NOMES=C(2), PRESENÇA=D(3), CHOPP=E(4), PAGOU=F(5)
+const iN=2, iP=3, iC=4, iPg=5;
 
-let rows = [];
-let filtro = 'todos';
-let cdSec  = REFRESH;
-let cdTimer = null;
+let rows=[], filtro='todos', cdSec=REFRESH, cdTimer=null;
 
 const s = v => (v||'').toString().trim();
 
 const fns = {
-  'todos':          () => true,
-  'confirmados':    r => s(r[iPres])  === 'Sim',
-  'pendentes':      r => s(r[iPres])  === 'Não respondeu' || s(r[iPres]) === '',
-  'pagaram':        r => s(r[iPagou]) === 'Sim',
-  'nao-pagaram':    r => s(r[iPagou]) !== 'Sim' && s(r[iPagou]) !== '',
-  'semchopp':       r => ['Não','Não Vai beber'].includes(s(r[iChopp])),
-  'bebe-nao-pagou': r => s(r[iChopp]) === 'Sim' && s(r[iPagou]) !== 'Sim' && s(r[iPagou]) !== '',
+  'todos':          ()=>true,
+  'confirmados':    r=>s(r[iP])==='Sim',
+  'pendentes':      r=>s(r[iP])==='Não respondeu'||s(r[iP])==='',
+  'pagaram':        r=>s(r[iPg])==='Sim',
+  'nao-pagaram':    r=>s(r[iPg])!=='Sim'&&s(r[iPg])!=='',
+  'semchopp':       r=>['Não','Não Vai beber'].includes(s(r[iC])),
+  'bebe-nao-pagou': r=>s(r[iC])==='Sim'&&s(r[iPg])!=='Sim'&&s(r[iPg])!=='',
 };
 
-function bp(v) {
-  switch(s(v)) {
-    case 'Sim':           return '<span class="badge b-green">Confirmado</span>';
-    case 'Não':           return '<span class="badge b-red">Não vai</span>';
-    case 'Não respondeu': return '<span class="badge b-amber">Sem resposta</span>';
-    default:              return '<span class="badge b-amber">Sem resposta</span>';
+function bp(v){
+  switch(s(v)){
+    case 'Sim':return'<span class="badge bg">Confirmado</span>';
+    case 'Não':return'<span class="badge br">Não vai</span>';
+    default:return'<span class="badge ba">Sem resposta</span>';
   }
 }
-function bpag(v) {
-  const x = s(v);
-  if (x === 'Sim')                              return '<span class="badge b-blue">Pago</span>';
-  if (x === 'Não')                              return '<span class="badge b-red">Pendente</span>';
-  if (x === 'Não respondeu'||x==='Não Respondeu') return '<span class="badge b-amber">Sem resposta</span>';
-  if (x === 'Não Vai beber')                    return '<span class="badge b-gray">N/A</span>';
-  if (!x)                                       return '<span class="badge b-gray">—</span>';
-  return `<span class="badge b-gray">${x}</span>`;
+function bpg(v){
+  const x=s(v);
+  if(x==='Sim')return'<span class="badge bb">Pago</span>';
+  if(x==='Não')return'<span class="badge br">Pendente</span>';
+  if(x==='Não respondeu'||x==='Não Respondeu')return'<span class="badge ba">Sem resposta</span>';
+  if(x==='Não Vai beber')return'<span class="badge bx">N/A</span>';
+  if(!x)return'<span class="badge bx">—</span>';
+  return`<span class="badge bx">${x}</span>`;
 }
-function bc(v) {
-  const x = s(v);
-  if (x === 'Sim')                   return '<span class="badge b-green">Sim</span>';
-  if (x==='Não'||x==='Não Vai beber') return '<span class="badge b-red">Não bebe</span>';
-  if (x === 'Não respondeu')         return '<span class="badge b-amber">Sem resposta</span>';
-  return '<span class="badge b-gray">—</span>';
+function bch(v){
+  const x=s(v);
+  if(x==='Sim')return'<span class="badge bg">Sim</span>';
+  if(x==='Não'||x==='Não Vai beber')return'<span class="badge br">Não bebe</span>';
+  if(x==='Não respondeu')return'<span class="badge ba">Sem resposta</span>';
+  return'<span class="badge bx">—</span>';
 }
 
-function setFiltro(el) {
-  filtro = el.dataset.f;
-  document.querySelectorAll('[data-f]').forEach(e => e.classList.toggle('active', e.dataset.f === filtro));
+function setF(el){
+  filtro=el.dataset.f;
+  document.querySelectorAll('[data-f]').forEach(e=>e.classList.toggle('active',e.dataset.f===filtro));
   render();
 }
 
-function render() {
-  const q = (document.getElementById('search').value||'').toLowerCase();
-  let data = rows.filter(fns[filtro]||fns['todos']);
-  if (q) data = data.filter(r => s(r[iNome]).toLowerCase().includes(q));
-
-  const tb = document.getElementById('tbody');
-  if (!data.length) {
-    tb.innerHTML = '<tr><td colspan="4" class="empty">Nenhum convidado encontrado</td></tr>';
-    return;
-  }
-  tb.innerHTML = data.map(r => `<tr>
-    <td title="${s(r[iNome])}">${s(r[iNome])||'—'}</td>
-    <td>${bp(r[iPres])}</td>
-    <td>${bpag(r[iPagou])}</td>
-    <td>${bc(r[iChopp])}</td>
+function render(){
+  const q=(document.getElementById('search').value||'').toLowerCase();
+  let data=rows.filter(fns[filtro]||fns.todos);
+  if(q)data=data.filter(r=>s(r[iN]).toLowerCase().includes(q));
+  const tb=document.getElementById('tbody');
+  if(!data.length){tb.innerHTML='<tr><td colspan="4" class="empty">Nenhum convidado encontrado</td></tr>';return;}
+  tb.innerHTML=data.map(r=>`<tr>
+    <td title="${s(r[iN])}">${s(r[iN])||'—'}</td>
+    <td>${bp(r[iP])}</td><td>${bpg(r[iPg])}</td><td>${bch(r[iC])}</td>
   </tr>`).join('');
 }
 
-function parseCSV(txt) {
-  return txt.split(/\r?\n/).map(line => {
-    const cols = []; let cur = '', q = false;
-    for (const ch of line) {
-      if (ch === '"') { q = !q; }
-      else if (ch === ',' && !q) { cols.push(cur.trim()); cur = ''; }
-      else cur += ch;
+function parseCSV(txt){
+  return txt.split(/\r?\n/).map(line=>{
+    const cols=[];let cur='',q=false;
+    for(const ch of line){
+      if(ch==='"'){q=!q;}
+      else if(ch===','&&!q){cols.push(cur.trim());cur='';}
+      else cur+=ch;
     }
     cols.push(cur.trim());
     return cols;
   });
 }
 
-function startCD() {
-  clearInterval(cdTimer);
-  cdSec = REFRESH;
-  cdTimer = setInterval(() => {
-    cdSec--;
-    const m = Math.floor(cdSec/60), sc = String(cdSec%60).padStart(2,'0');
-    document.getElementById('foot-cd').textContent = `Próxima atualização em ${m}:${sc}`;
-    if (cdSec <= 0) { clearInterval(cdTimer); loadData(); }
-  }, 1000);
+function showDebug(msg){
+  const d=document.getElementById('debug');
+  d.style.display='block';
+  d.textContent=msg;
 }
 
-async function loadData() {
-  document.getElementById('header-meta').textContent = 'Atualizando...';
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
-  try {
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error('status ' + res.status);
-    const txt  = await res.text();
-    const all  = parseCSV(txt);
+function startCD(){
+  clearInterval(cdTimer);cdSec=REFRESH;
+  cdTimer=setInterval(()=>{
+    cdSec--;
+    const m=Math.floor(cdSec/60),sc=String(cdSec%60).padStart(2,'0');
+    document.getElementById('fcd').textContent=`Próxima atualização em ${m}:${sc}`;
+    if(cdSec<=0){clearInterval(cdTimer);loadData();}
+  },1000);
+}
 
-    // linha 1 = título, linha 2 = vazia, linha 3 = cabeçalhos → dados a partir da linha 4 (índice 3)
-    rows = all.slice(3).filter(r => s(r[iNome]) && s(r[iNome]) !== 'NOMES');
+async function tryFetch(gid){
+  const url=`https://docs.google.com/spreadsheets/d/${ID}/export?format=csv&gid=${gid}`;
+  const res=await fetch(url,{cache:'no-store'});
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  const txt=await res.text();
+  // verifica se veio HTML (redirect para login) em vez de CSV
+  if(txt.trim().startsWith('<'))throw new Error('Recebeu HTML — planilha não é pública ou GID errado');
+  return txt;
+}
 
-    document.getElementById('n0').textContent = rows.length;
-    document.getElementById('n1').textContent = rows.filter(fns.confirmados).length;
-    document.getElementById('n2').textContent = rows.filter(fns.pendentes).length;
-    document.getElementById('n3').textContent = rows.filter(fns.pagaram).length;
-    document.getElementById('n4').textContent = rows.filter(fns.semchopp).length;
-    document.getElementById('n5').textContent = rows.filter(fns['bebe-nao-pagou']).length;
+async function loadData(){
+  document.getElementById('hmeta').textContent='Atualizando...';
+  document.getElementById('tbody').innerHTML='<tr><td colspan="4" class="empty">Carregando...</td></tr>';
 
-    document.getElementById('header-meta').textContent = `${rows.length} convidados · sincronizado`;
-    document.getElementById('foot-upd').textContent = 'Atualizado: ' + new Date().toLocaleString('pt-BR');
+  // Tenta GID 0 primeiro, depois GID 1 e 2 como fallback
+  const gids=['0','1','2'];
+  let txt=null, usedGid=null;
 
-    render();
-    startCD();
-  } catch(e) {
-    document.getElementById('header-meta').textContent = 'Erro ao carregar — tentando novamente em 2 min';
-    document.getElementById('tbody').innerHTML =
-      `<tr><td colspan="4" class="empty">Não foi possível carregar.<br>
-       <small>Certifique-se que a planilha está com acesso <b>"qualquer pessoa com o link"</b>.</small></td></tr>`;
-    startCD();
+  for(const gid of gids){
+    try{
+      txt=await tryFetch(gid);
+      // Verifica se tem dados na linha 4 coluna C (índice 2)
+      const lines=txt.split(/\r?\n/);
+      if(lines.length>3){
+        const row3=lines[3].split(',');
+        if(row3.length>2&&row3[2].trim()!==''){
+          usedGid=gid;
+          break;
+        }
+      }
+    }catch(e){
+      showDebug(`GID ${gid} falhou: ${e.message}`);
+    }
   }
+
+  if(!txt||!usedGid){
+    document.getElementById('hmeta').textContent='Erro — planilha não acessível';
+    document.getElementById('tbody').innerHTML=`<tr><td colspan="4" class="empty">
+      Não foi possível carregar.<br>
+      <small>Certifique-se que a planilha está como <b>"Qualquer pessoa com o link pode visualizar"</b>.</small>
+    </td></tr>`;
+    startCD();return;
+  }
+
+  const all=parseCSV(txt);
+  // Linha 1=título, linha 2=vazia, linha 3=cabeçalho, linha 4+ = dados
+  rows=all.slice(3).filter(r=>s(r[iN])&&s(r[iN])!=='NOMES');
+
+  // Debug: mostra primeiras linhas se total for 0
+  if(rows.length===0){
+    const preview=all.slice(0,6).map((r,i)=>`Linha ${i+1}: [${r.join(' | ')}]`).join('\n');
+    showDebug(`GID usado: ${usedGid} | Total linhas CSV: ${all.length}\n\nPrimeiras linhas:\n${preview}`);
+  }
+
+  document.getElementById('n0').textContent=rows.length;
+  document.getElementById('n1').textContent=rows.filter(fns.confirmados).length;
+  document.getElementById('n2').textContent=rows.filter(fns.pendentes).length;
+  document.getElementById('n3').textContent=rows.filter(fns.pagaram).length;
+  document.getElementById('n4').textContent=rows.filter(fns.semchopp).length;
+  document.getElementById('n5').textContent=rows.filter(fns['bebe-nao-pagou']).length;
+
+  document.getElementById('hmeta').textContent=`${rows.length} convidados · sincronizado`;
+  document.getElementById('fupd').textContent='Atualizado: '+new Date().toLocaleString('pt-BR');
+
+  render();
+  startCD();
 }
 
 loadData();
