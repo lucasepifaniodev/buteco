@@ -7,309 +7,66 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #F7F5F0;
-      --surface: #FFFFFF;
-      --surface2: #F0EDE6;
-      --text: #1A1814;
-      --text2: #6B6760;
-      --text3: #A8A5A0;
-      --border: rgba(0,0,0,0.08);
-      --border2: rgba(0,0,0,0.15);
-      --green-bg: #EAF3DE;
-      --green-text: #27500A;
-      --amber-bg: #FAEEDA;
-      --amber-text: #633806;
-      --blue-bg: #E6F1FB;
-      --blue-text: #0C447C;
-      --red-bg: #FCEBEB;
-      --red-text: #791F1F;
+      --bg: #F7F5F0; --surface: #FFFFFF; --surface2: #F0EDE6;
+      --text: #1A1814; --text2: #6B6760; --text3: #A8A5A0;
+      --border: rgba(0,0,0,0.08); --border2: rgba(0,0,0,0.15);
+      --green-bg: #EAF3DE; --green-text: #27500A;
+      --amber-bg: #FAEEDA; --amber-text: #633806;
+      --blue-bg:  #E6F1FB; --blue-text:  #0C447C;
+      --red-bg:   #FCEBEB; --red-text:   #791F1F;
       --accent: #1A1814;
     }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 0;
-    }
-
-    header {
-      background: var(--accent);
-      padding: 2.5rem 2rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 220px; height: 220px;
-      border-radius: 50%;
-      border: 40px solid rgba(255,255,255,0.04);
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: 30%;
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      border: 30px solid rgba(255,255,255,0.03);
-    }
-
-    .header-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .header-tag {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 0.5rem;
-    }
-
-    header h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: #fff;
-      font-weight: 400;
-      line-height: 1.1;
-    }
-
-    header h1 em {
-      font-style: italic;
-      color: rgba(255,255,255,0.6);
-    }
-
-    .header-meta {
-      margin-top: 1rem;
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-    }
-
-    .header-actions {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--accent); padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; border: 40px solid rgba(255,255,255,0.04); }
+    .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .header-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; }
+    header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3rem); color: #fff; font-weight: 400; line-height: 1.1; }
+    header h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+    .header-meta { margin-top: 1rem; font-size: 13px; color: rgba(255,255,255,0.4); }
+    .header-actions { margin-top: 1.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; transition: transform 0.1s; }
     .btn:active { transform: scale(0.98); }
-
-    .btn-light {
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
+    .btn-light { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
     .btn-light:hover { background: rgba(255,255,255,0.18); }
-
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 10px;
-      margin-bottom: 2rem;
-    }
-
-    .stat {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1rem 0.875rem;
-      cursor: pointer;
-      transition: border-color 0.15s, transform 0.1s;
-    }
+    main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; transition: border-color 0.15s, transform 0.1s; }
     .stat:hover { border-color: var(--border2); }
     .stat:active { transform: scale(0.98); }
     .stat.active { border-color: var(--accent); border-width: 1.5px; }
-
-    .stat-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text3);
-      margin-bottom: 6px;
-    }
-
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1;
-    }
-
-    .stat-sub {
-      font-size: 11px;
-      color: var(--text3);
-      margin-top: 4px;
-    }
-
+    .stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; line-height: 1; }
     .stat.s-confirmados .stat-num { color: #27500A; }
-    .stat.s-pendentes .stat-num { color: #633806; }
-    .stat.s-pagaram .stat-num { color: #0C447C; }
-    .stat.s-semchopp .stat-num { color: #791F1F; }
-
-    .filters {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .filter-btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border2);
-      background: var(--surface);
-      color: var(--text2);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
+    .stat.s-pendentes   .stat-num { color: #633806; }
+    .stat.s-pagaram     .stat-num { color: #0C447C; }
+    .stat.s-semchopp    .stat-num { color: #791F1F; }
+    .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border2); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; }
     .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .filter-btn.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-
-    .search-wrap {
-      margin-bottom: 1rem;
-      position: relative;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text3);
-      font-size: 14px;
-      pointer-events: none;
-    }
-
-    #search {
-      width: 100%;
-      padding: 9px 12px 9px 34px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      background: var(--surface);
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.15s;
-    }
+    .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .search-wrap { margin-bottom: 1rem; position: relative; }
+    #search { width: 100%; padding: 9px 12px 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface); color: var(--text); outline: none; transition: border-color 0.15s; }
     #search:focus { border-color: var(--accent); }
     #search::placeholder { color: var(--text3); }
-
-    .table-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-
-    thead tr {
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-    }
-
-    th {
-      text-align: left;
-      padding: 10px 14px;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--text3);
-    }
+    .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    thead tr { background: var(--surface2); border-bottom: 1px solid var(--border); }
+    th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text3); }
     th:not(:first-child) { text-align: center; }
-
-    td {
-      padding: 11px 14px;
-      font-size: 14px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    td { padding: 11px 14px; font-size: 14px; border-bottom: 1px solid var(--border); color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     td:not(:first-child) { text-align: center; }
     tr:last-child td { border-bottom: none; }
     tr:hover td { background: var(--surface2); }
-
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 500;
-      padding: 3px 9px;
-      border-radius: 20px;
-    }
-
+    .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
     .badge-green { background: var(--green-bg); color: var(--green-text); }
     .badge-amber { background: var(--amber-bg); color: var(--amber-text); }
     .badge-blue  { background: var(--blue-bg);  color: var(--blue-text);  }
     .badge-red   { background: var(--red-bg);   color: var(--red-text);   }
     .badge-gray  { background: var(--surface2); color: var(--text3);      }
-
-    .empty {
-      padding: 3rem;
-      text-align: center;
-      color: var(--text3);
-      font-size: 14px;
-    }
-
-    .footer-info {
-      margin-top: 10px;
-      font-size: 11px;
-      color: var(--text3);
-      text-align: right;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .anim { animation: fadeIn 0.35s ease both; }
-
+    .empty { padding: 3rem; text-align: center; color: var(--text3); font-size: 14px; }
+    .footer-info { margin-top: 10px; font-size: 11px; color: var(--text3); text-align: right; }
     @media (max-width: 600px) {
       .stats { grid-template-columns: repeat(3, 1fr); }
       th:nth-child(4), td:nth-child(4) { display: none; }
@@ -320,7 +77,7 @@
 
 <header>
   <div class="header-inner">
-    <div class="header-tag">Gestão de evento</div>
+    <div class="header-tag">Aniversário Mari &amp; Epi</div>
     <h1>Lista de <em>convidados</em></h1>
     <div class="header-meta" id="header-meta">Carregando dados...</div>
     <div class="header-actions">
@@ -330,7 +87,7 @@
 </header>
 
 <main>
-  <div class="stats" id="stats">
+  <div class="stats">
     <div class="stat active" onclick="setFiltro('todos')" data-f="todos">
       <div class="stat-label">Total</div>
       <div class="stat-num" id="sn-total">—</div>
@@ -354,11 +111,10 @@
   </div>
 
   <div class="search-wrap">
-    <span class="search-icon">&#128269;</span>
-    <input type="text" id="search" placeholder="Buscar convidado..." oninput="renderTabela()" />
+    <input type="text" id="search" placeholder="Buscar convidado pelo nome..." oninput="renderTabela()" />
   </div>
 
-  <div class="filters" id="filtros">
+  <div class="filters">
     <button class="filter-btn active" onclick="setFiltro('todos')" data-f="todos">Todos</button>
     <button class="filter-btn" onclick="setFiltro('confirmados')" data-f="confirmados">Confirmados</button>
     <button class="filter-btn" onclick="setFiltro('pendentes')" data-f="pendentes">Sem resposta</button>
@@ -382,77 +138,77 @@
       </tbody>
     </table>
   </div>
-
   <div class="footer-info" id="footer-info"></div>
 </main>
 
 <script>
-  const SHEET_ID = '13nvmfaI0ttiaVG7Ej7gcd44cclo6K7OfmatoO9oqkSA';
+  const SHEET_ID   = '13nvmfaI0ttiaVG7Ej7gcd44cclo6K7OfmatoO9oqkSA';
   const SHEET_NAME = 'Convidados';
-  const COL_PRESENCA = 'Presença';
-  const COL_PAGAMENTO = 'Status pagamento';
-  const COL_CHOPP = 'Bebe chopp';
+
+  // Nomes EXATOS das colunas na planilha
+  const COL_NOME     = 'NOMES';
+  const COL_PRESENCA = 'PRESENÇA';
+  const COL_CHOPP    = 'VAI BEBER CHOPP?';
+  const COL_PAGOU    = 'PAGOU O CHOOP';
 
   let todos = [];
   let filtroAtual = 'todos';
 
-  const normStr = v => (v||'').toString().toLowerCase().trim();
-  const isConfirmado = r => ['sim','confirmado','confirmada','yes','s','1'].includes(normStr(r[COL_PRESENCA]));
-  const isRecusou = r => ['não','nao','no','n','0','recusou','recusado'].includes(normStr(r[COL_PRESENCA]));
-  const isPendente = r => !isConfirmado(r) && !isRecusou(r);
-  const isPagou = r => ['sim','pago','pag','yes','s','1','realizado','efetuado'].includes(normStr(r[COL_PAGAMENTO]));
-  const isNaoPagou = r => ['não','nao','no','n','0','pendente'].includes(normStr(r[COL_PAGAMENTO]));
-  const isSemChopp = r => ['não','nao','no','n','0'].includes(normStr(r[COL_CHOPP]));
+  const norm = v => (v || '').toString().trim();
+
+  const isConfirmado = r => norm(r[COL_PRESENCA]) === 'Sim';
+  const isPendente   = r => norm(r[COL_PRESENCA]) === 'Não respondeu' || norm(r[COL_PRESENCA]) === '';
+  const isNaoVai     = r => norm(r[COL_PRESENCA]) === 'Não';
+  const isPagou      = r => norm(r[COL_PAGOU]) === 'Sim';
+  const isNaoPagou   = r => norm(r[COL_PAGOU]) !== 'Sim' && norm(r[COL_PAGOU]) !== '';
+  const isSemChopp   = r => norm(r[COL_CHOPP]) === 'Não' || norm(r[COL_CHOPP]) === 'Não Vai beber';
 
   function badgePresenca(val) {
-    const v = normStr(val);
-    if (!v) return '<span class="badge badge-gray">—</span>';
-    if (['sim','confirmado','confirmada','yes','s','1'].includes(v)) return '<span class="badge badge-green">Confirmado</span>';
-    if (['não','nao','no','n','0','recusou','recusado'].includes(v)) return '<span class="badge badge-red">Não vai</span>';
+    const v = norm(val);
+    if (v === 'Sim')            return '<span class="badge badge-green">Confirmado</span>';
+    if (v === 'Não')            return '<span class="badge badge-red">Não vai</span>';
+    if (v === 'Não respondeu')  return '<span class="badge badge-amber">Sem resposta</span>';
     return '<span class="badge badge-amber">Sem resposta</span>';
   }
 
-  function badgePagamento(val) {
-    const v = normStr(val);
-    if (!v) return '<span class="badge badge-gray">—</span>';
-    if (['sim','pago','pag','yes','s','1','realizado','efetuado'].includes(v)) return '<span class="badge badge-blue">Pago</span>';
-    if (['não','nao','no','n','0','pendente'].includes(v)) return '<span class="badge badge-red">Pendente</span>';
-    return `<span class="badge badge-gray">${val}</span>`;
+  function badgePagou(val) {
+    const v = norm(val);
+    if (v === 'Sim')            return '<span class="badge badge-blue">Pago</span>';
+    if (v === 'Não')            return '<span class="badge badge-red">Pendente</span>';
+    if (v === 'Não respondeu')  return '<span class="badge badge-amber">Sem resposta</span>';
+    if (v === 'Não Vai beber')  return '<span class="badge badge-gray">N/A</span>';
+    if (!v)                     return '<span class="badge badge-gray">—</span>';
+    return `<span class="badge badge-gray">${v}</span>`;
   }
 
   function badgeChopp(val) {
-    const v = normStr(val);
-    if (!v) return '<span class="badge badge-gray">—</span>';
-    if (['não','nao','no','n','0'].includes(v)) return '<span class="badge badge-red">Não bebe</span>';
-    if (['sim','yes','s','1'].includes(v)) return '<span class="badge badge-green">Sim</span>';
-    return `<span class="badge badge-gray">${val}</span>`;
+    const v = norm(val);
+    if (v === 'Sim')            return '<span class="badge badge-green">Sim</span>';
+    if (v === 'Não')            return '<span class="badge badge-red">Não bebe</span>';
+    if (v === 'Não Vai beber')  return '<span class="badge badge-red">Não bebe</span>';
+    if (v === 'Não respondeu')  return '<span class="badge badge-amber">Sem resposta</span>';
+    return '<span class="badge badge-gray">—</span>';
   }
 
   function setFiltro(f) {
     filtroAtual = f;
-    document.querySelectorAll('[data-f]').forEach(el => {
-      el.classList.toggle('active', el.dataset.f === f);
-    });
+    document.querySelectorAll('[data-f]').forEach(el => el.classList.toggle('active', el.dataset.f === f));
     renderTabela();
   }
 
   function renderTabela() {
-    const busca = document.getElementById('search').value.toLowerCase().trim();
+    const busca = (document.getElementById('search').value || '').toLowerCase().trim();
     let dados = todos;
 
-    if (filtroAtual === 'confirmados') dados = dados.filter(isConfirmado);
-    else if (filtroAtual === 'pendentes') dados = dados.filter(isPendente);
-    else if (filtroAtual === 'pagaram') dados = dados.filter(isPagou);
+    if      (filtroAtual === 'confirmados') dados = dados.filter(isConfirmado);
+    else if (filtroAtual === 'pendentes')   dados = dados.filter(isPendente);
+    else if (filtroAtual === 'pagaram')     dados = dados.filter(isPagou);
     else if (filtroAtual === 'nao-pagaram') dados = dados.filter(isNaoPagou);
-    else if (filtroAtual === 'semchopp') dados = dados.filter(isSemChopp);
+    else if (filtroAtual === 'semchopp')    dados = dados.filter(isSemChopp);
 
-    if (busca) {
-      dados = dados.filter(r => Object.values(r).some(v => (v||'').toString().toLowerCase().includes(busca)));
-    }
+    if (busca) dados = dados.filter(r => norm(r[COL_NOME]).toLowerCase().includes(busca));
 
-    const colNome = Object.keys(todos[0] || {})[0] || 'Nome';
     const tbody = document.getElementById('tbody');
-
     if (!dados.length) {
       tbody.innerHTML = '<tr><td colspan="4" class="empty">Nenhum convidado encontrado</td></tr>';
       return;
@@ -460,9 +216,9 @@
 
     tbody.innerHTML = dados.map(r => `
       <tr>
-        <td title="${r[colNome]||''}">${r[colNome]||'—'}</td>
+        <td title="${norm(r[COL_NOME])}">${norm(r[COL_NOME]) || '—'}</td>
         <td>${badgePresenca(r[COL_PRESENCA])}</td>
-        <td>${badgePagamento(r[COL_PAGAMENTO])}</td>
+        <td>${badgePagou(r[COL_PAGOU])}</td>
         <td>${badgeChopp(r[COL_CHOPP])}</td>
       </tr>`).join('');
   }
@@ -471,29 +227,30 @@
     document.getElementById('header-meta').textContent = 'Atualizando...';
     const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
     try {
-      const res = await fetch(url);
+      const res  = await fetch(url);
       const text = await res.text();
       const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
+
       const cols = json.table.cols.map(c => c.label);
       todos = json.table.rows
         .map(r => {
           const obj = {};
-          r.c.forEach((cell, i) => { obj[cols[i]] = cell ? cell.v : ''; });
+          r.c.forEach((cell, i) => { obj[cols[i]] = cell && cell.v !== null ? String(cell.v) : ''; });
           return obj;
         })
-        .filter(r => Object.values(r).some(v => v !== ''));
+        .filter(r => norm(r[COL_NOME]) !== '');
 
-      document.getElementById('sn-total').textContent = todos.length;
+      document.getElementById('sn-total').textContent       = todos.length;
       document.getElementById('sn-confirmados').textContent = todos.filter(isConfirmado).length;
-      document.getElementById('sn-pendentes').textContent = todos.filter(isPendente).length;
-      document.getElementById('sn-pagaram').textContent = todos.filter(isPagou).length;
-      document.getElementById('sn-semchopp').textContent = todos.filter(isSemChopp).length;
+      document.getElementById('sn-pendentes').textContent   = todos.filter(isPendente).length;
+      document.getElementById('sn-pagaram').textContent     = todos.filter(isPagou).length;
+      document.getElementById('sn-semchopp').textContent    = todos.filter(isSemChopp).length;
 
-      document.getElementById('header-meta').textContent = `${todos.length} convidados · Planilha sincronizada`;
-      document.getElementById('footer-info').textContent = 'Atualizado em ' + new Date().toLocaleString('pt-BR');
+      document.getElementById('header-meta').textContent = `${todos.length} convidados · sincronizado com a planilha`;
+      document.getElementById('footer-info').textContent = 'Última atualização: ' + new Date().toLocaleString('pt-BR');
       renderTabela();
     } catch (e) {
-      document.getElementById('header-meta').textContent = 'Erro ao carregar dados. Verifique o acesso à planilha.';
+      document.getElementById('header-meta').textContent = 'Erro ao carregar. Verifique o acesso à planilha.';
       document.getElementById('tbody').innerHTML = '<tr><td colspan="4" class="empty">Não foi possível carregar os dados.<br><small>Certifique-se que a planilha está com acesso "qualquer pessoa com o link pode visualizar".</small></td></tr>';
     }
   }
