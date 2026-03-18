@@ -1,287 +1,265 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎉 Aniversário Mari & Epi</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#fdf8f2;--gold:#c9973a;--gold-light:#f0d080;--rose:#d4607a;--rose-light:#f9dde4;--green:#3a8c5c;--ink:#1a1208;--muted:#8a7060;--shadow:0 4px 24px rgba(80,40,10,.10);--shadow-lg:0 12px 48px rgba(80,40,10,.18)}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,#f0d08033 0%,transparent 70%);pointer-events:none;z-index:0}
-body::after{content:'';position:fixed;bottom:-150px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,#d4607a22 0%,transparent 70%);pointer-events:none;z-index:0}
-header{position:relative;z-index:1;text-align:center;padding:3.5rem 1rem 2rem}
-.tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:#fdf3dc;border:1px solid #f0d080;border-radius:999px;padding:.28rem 1rem;margin-bottom:1rem}
-header h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.4rem);font-weight:900;color:var(--ink);line-height:1.1;margin-bottom:.5rem}
-header h1 em{font-style:italic;color:var(--rose)}
-.sub{font-size:.88rem;color:var(--muted);font-weight:300;letter-spacing:.03em}
-.divider{width:60px;height:2px;background:linear-gradient(90deg,var(--gold-light),var(--rose));margin:1.4rem auto 0;border-radius:2px}
-.grid-wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:2rem 1.5rem 1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1.1rem}
-.card{background:#fff;border-radius:20px;padding:1.5rem 1.3rem 1.3rem;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;animation:fadeUp .5s ease both}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.10s}.card:nth-child(3){animation-delay:.15s}
-.card:nth-child(4){animation-delay:.20s}.card:nth-child(5){animation-delay:.25s}.card:nth-child(6){animation-delay:.30s}.card:nth-child(7){animation-delay:.35s}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0}
-.card.c-gold::before{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
-.card.c-green::before{background:linear-gradient(90deg,var(--green),#7acca0)}
-.card.c-rose::before{background:linear-gradient(90deg,var(--rose),#f4a0b5)}
-.card.c-ink::before{background:linear-gradient(90deg,#6b5a4e,#b09a8a)}
-.card.c-rose{cursor:pointer}
-.card.c-rose:hover .hint{opacity:1;transform:translateY(0)}
-.card-icon{font-size:1.6rem;margin-bottom:.7rem;display:block;line-height:1}
-.lbl{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.5rem;line-height:1.3}
-.val{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;line-height:1;color:var(--ink)}
-.val.gold{color:var(--gold)}.val.green{color:var(--green)}.val.rose{color:var(--rose)}.val.money{font-size:1.7rem;color:var(--gold)}
-.hint{font-size:.68rem;font-weight:600;color:var(--rose);margin-top:.5rem;opacity:.6;transform:translateY(4px);transition:opacity .2s,transform .2s;display:flex;align-items:center;gap:4px}
-.overlay{display:none;position:fixed;inset:0;background:rgba(26,18,8,.55);backdrop-filter:blur(4px);z-index:500;align-items:center;justify-content:center;padding:1rem}
-.overlay.open{display:flex}
-.modal{background:#fff;border-radius:24px;width:100%;max-width:420px;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 32px 80px rgba(26,18,8,.3);overflow:hidden;animation:modalIn .25s ease}
-@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.mhead{background:linear-gradient(135deg,var(--rose) 0%,#c04060 100%);color:#fff;padding:1.4rem 1.5rem 1.2rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
-.mhead h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.2rem}
-.mhead p{font-size:.75rem;opacity:.8;font-weight:300}
-.mclose{background:rgba(255,255,255,.2);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
-.mclose:hover{background:rgba(255,255,255,.35)}
-.msearch-wrap{padding:.9rem 1.2rem;border-bottom:1px solid #f0ece8;background:#fdfbf9}
-.msearch-wrap input{width:100%;border:1.5px solid #ede8e0;border-radius:10px;padding:.5rem .9rem;font-family:'Outfit',sans-serif;font-size:.88rem;outline:none;background:#fff;color:var(--ink);transition:border-color .2s}
-.msearch-wrap input:focus{border-color:var(--rose)}
-.mbody{overflow-y:auto;flex:1}
-.mitem{padding:.72rem 1.5rem;font-size:.9rem;color:var(--ink);border-bottom:1px solid #f8f4f0;display:flex;align-items:center;gap:.75rem;transition:background .1s}
-.mitem:hover{background:#fdf8f2}.mitem:last-child{border-bottom:none}
-.mdot{width:8px;height:8px;border-radius:50%;background:var(--rose);flex-shrink:0}
-.mempty{padding:2.5rem 1rem;text-align:center;color:var(--muted);font-size:.88rem;line-height:1.7}
-.mfoot{padding:.7rem 1.5rem;border-top:1px solid #f0ece8;background:#fdfbf9;font-size:.72rem;color:var(--muted);display:flex;align-items:center;justify-content:space-between}
-.mcount{background:var(--rose-light);color:var(--rose);font-weight:600;padding:.15rem .6rem;border-radius:999px;font-size:.72rem}
-.status{position:relative;z-index:1;text-align:center;font-size:.72rem;color:var(--muted);padding:1rem 1rem 2rem}
-.status a{color:var(--gold);text-decoration:none;font-weight:500}
-.live-badge{display:inline-flex;align-items:center;gap:5px;background:#eef9f3;color:var(--green);border:1px solid #b6e8ce;border-radius:999px;padding:.2rem .75rem;font-size:.7rem;font-weight:600}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-@media(max-width:480px){.grid-wrap{grid-template-columns:repeat(2,1fr);gap:.8rem;padding:1.2rem 1rem 1rem}.val{font-size:2.4rem}.val.money{font-size:1.3rem}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Convidados</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F7F5F0; --surface: #FFFFFF; --surface2: #F0EDE6;
+      --text: #1A1814; --text2: #6B6760; --text3: #A8A5A0;
+      --border: rgba(0,0,0,0.08); --border2: rgba(0,0,0,0.15);
+      --green-bg: #EAF3DE; --green-text: #27500A;
+      --amber-bg: #FAEEDA; --amber-text: #633806;
+      --blue-bg:  #E6F1FB; --blue-text:  #0C447C;
+      --red-bg:   #FCEBEB; --red-text:   #791F1F;
+      --accent: #1A1814;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--accent); padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; border: 40px solid rgba(255,255,255,0.04); }
+    .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .header-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; }
+    header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3rem); color: #fff; font-weight: 400; line-height: 1.1; }
+    header h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+    .header-meta { margin-top: 1rem; font-size: 13px; color: rgba(255,255,255,0.4); }
+    .header-actions { margin-top: 1.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; transition: transform 0.1s; }
+    .btn:active { transform: scale(0.98); }
+    .btn-light { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-light:hover { background: rgba(255,255,255,0.18); }
+    main { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; transition: border-color 0.15s, transform 0.1s; }
+    .stat:hover { border-color: var(--border2); }
+    .stat:active { transform: scale(0.98); }
+    .stat.active { border-color: var(--accent); border-width: 1.5px; }
+    .stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; line-height: 1; }
+    .stat.s-confirmados .stat-num { color: #27500A; }
+    .stat.s-pendentes   .stat-num { color: #633806; }
+    .stat.s-pagaram     .stat-num { color: #0C447C; }
+    .stat.s-semchopp    .stat-num { color: #791F1F; }
+    .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border2); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.15s; }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .search-wrap { margin-bottom: 1rem; }
+    #search { width: 100%; padding: 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface); color: var(--text); outline: none; transition: border-color 0.15s; }
+    #search:focus { border-color: var(--accent); }
+    #search::placeholder { color: var(--text3); }
+    .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    thead tr { background: var(--surface2); border-bottom: 1px solid var(--border); }
+    th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text3); }
+    th:not(:first-child) { text-align: center; }
+    td { padding: 11px 14px; font-size: 14px; border-bottom: 1px solid var(--border); color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    td:not(:first-child) { text-align: center; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--surface2); }
+    .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; }
+    .badge-green { background: var(--green-bg); color: var(--green-text); }
+    .badge-amber { background: var(--amber-bg); color: var(--amber-text); }
+    .badge-blue  { background: var(--blue-bg);  color: var(--blue-text);  }
+    .badge-red   { background: var(--red-bg);   color: var(--red-text);   }
+    .badge-gray  { background: var(--surface2); color: var(--text3);      }
+    .empty { padding: 3rem; text-align: center; color: var(--text3); font-size: 14px; }
+    .footer-info { margin-top: 10px; font-size: 11px; color: var(--text3); text-align: right; }
+    @media (max-width: 600px) {
+      .stats { grid-template-columns: repeat(3, 1fr); }
+      th:nth-child(4), td:nth-child(4) { display: none; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <div class="tag">✨ Painel ao vivo</div>
-  <h1>Aniversário<br><em>Mari & Epi</em></h1>
-  <p class="sub">Acompanhe os convidados em tempo real</p>
-  <div class="divider"></div>
-</header>
-
-<div class="grid-wrap" id="grid"></div>
-<div class="status" id="status"></div>
-
-<div class="overlay" id="overlay" onclick="overlayClick(event)">
-  <div class="modal">
-    <div class="mhead">
-      <div>
-        <h2>Não pagaram o chopp</h2>
-        <p id="msubtitle"></p>
-      </div>
-      <button class="mclose" onclick="closeModal()">×</button>
-    </div>
-    <div class="msearch-wrap">
-      <input id="msearch" type="text" placeholder="🔍  Buscar nome..." oninput="filterModal()">
-    </div>
-    <div class="mbody" id="mlist"></div>
-    <div class="mfoot">
-      <span>Lista ao vivo da planilha</span>
-      <span class="mcount" id="mcount">0</span>
+  <div class="header-inner">
+    <div class="header-tag">Aniversário Mari &amp; Epi</div>
+    <h1>Lista de <em>convidados</em></h1>
+    <div class="header-meta" id="header-meta">Carregando dados...</div>
+    <div class="header-actions">
+      <button class="btn btn-light" onclick="loadData()">&#8635; Atualizar</button>
     </div>
   </div>
-</div>
+</header>
+
+<main>
+  <div class="stats">
+    <div class="stat active" onclick="setFiltro('todos')" data-f="todos">
+      <div class="stat-label">Total</div>
+      <div class="stat-num" id="sn-total">—</div>
+    </div>
+    <div class="stat s-confirmados" onclick="setFiltro('confirmados')" data-f="confirmados">
+      <div class="stat-label">Confirmados</div>
+      <div class="stat-num" id="sn-confirmados">—</div>
+    </div>
+    <div class="stat s-pendentes" onclick="setFiltro('pendentes')" data-f="pendentes">
+      <div class="stat-label">Sem resposta</div>
+      <div class="stat-num" id="sn-pendentes">—</div>
+    </div>
+    <div class="stat s-pagaram" onclick="setFiltro('pagaram')" data-f="pagaram">
+      <div class="stat-label">Pagaram</div>
+      <div class="stat-num" id="sn-pagaram">—</div>
+    </div>
+    <div class="stat s-semchopp" onclick="setFiltro('semchopp')" data-f="semchopp">
+      <div class="stat-label">Sem chopp</div>
+      <div class="stat-num" id="sn-semchopp">—</div>
+    </div>
+  </div>
+
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Buscar convidado pelo nome..." oninput="renderTabela()" />
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFiltro('todos')" data-f="todos">Todos</button>
+    <button class="filter-btn" onclick="setFiltro('confirmados')" data-f="confirmados">Confirmados</button>
+    <button class="filter-btn" onclick="setFiltro('pendentes')" data-f="pendentes">Sem resposta</button>
+    <button class="filter-btn" onclick="setFiltro('pagaram')" data-f="pagaram">Pagaram</button>
+    <button class="filter-btn" onclick="setFiltro('nao-pagaram')" data-f="nao-pagaram">Não pagaram</button>
+    <button class="filter-btn" onclick="setFiltro('semchopp')" data-f="semchopp">Sem chopp</button>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:36%;">Nome</th>
+          <th style="width:20%;">Presença</th>
+          <th style="width:22%;">Pagamento</th>
+          <th style="width:22%;">Chopp</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr><td colspan="4" class="empty">Carregando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer-info" id="footer-info"></div>
+</main>
 
 <script>
-// ── Dados embutidos — sempre corretos ────────────────────────────────────────
-const BASE = {
-  confirmados: 55, beberChopp: 38, pagouChopp: 5,
-  naoPagou: 33, naoResponderam: 26, naoVaoBeber: 17,
-  totalGastos: 'R$ 780,75',
-  naoPagaram: ["Giulia helena","Marco Tulio","Hiago Calvo","Isaac","Joyce",
-    "Matheus calabresa","Moises","Beatriz","Fernando","Duda","Lucas Sampaio",
-    "Bruno Fernando","Bernardo","Tio Paulo","Regina","Bolivar","Bessa","Saulo",
-    "Suelly Esposa saulo","Ana luiza Gabriel","Pai Marco","Mãe Marco",
-    "Gabriel Augusto","Leite, João","PH Cria","Dona Margo","Bruno",
-    "Maria Luiza Macedo","Bruna","Lucas","Sônia","Kathleen","João Vitor"]
-};
+  const SHEET_ID   = '13nvmfaI0ttiaVG7Ej7gcd44cclo6K7OfmatoO9oqkSA';
+  const SHEET_NAME = 'Convidados';
 
-const URL_CONV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vThvpgdanYTdMGOWHBqjWb4J228eDrGyHXUwMuTvzd60iAcUpu5BRaYvmq8Ufux8NA_GicTY8A1cm37/pub?gid=1875632085&single=true&output=csv';
-const PROXIES = [
-  u => `https://corsproxy.io/?url=${encodeURIComponent(u)}`,
-  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-];
+  // A planilha tem cabeçalho na linha 3 e dados a partir da coluna C.
+  // Usamos range=C3:F999 para pular as linhas extras e colunas A/B.
+  // Índices das colunas no range (0=NOMES, 1=PRESENÇA, 2=VAI BEBER CHOPP?, 3=PAGOU O CHOOP)
+  const I_NOME     = 0;
+  const I_PRESENCA = 1;
+  const I_CHOPP    = 2;
+  const I_PAGOU    = 3;
 
-let current = { ...BASE, naoPagaram: [...BASE.naoPagaram] };
+  let todos = [];
+  let filtroAtual = 'todos';
 
-// Renderiza imediatamente com dados embutidos
-render(current);
-setStatus('local');
+  const norm = v => (v || '').toString().trim();
 
-// Tenta atualizar ao vivo em background
-tryLive();
+  const isConfirmado = r => norm(r[I_PRESENCA]) === 'Sim';
+  const isPendente   = r => norm(r[I_PRESENCA]) === 'Não respondeu' || norm(r[I_PRESENCA]) === '';
+  const isPagou      = r => norm(r[I_PAGOU]) === 'Sim';
+  const isNaoPagou   = r => norm(r[I_PAGOU]) !== 'Sim' && norm(r[I_PAGOU]) !== '';
+  const isSemChopp   = r => norm(r[I_CHOPP]) === 'Não' || norm(r[I_CHOPP]) === 'Não Vai beber';
 
-async function tryLive() {
-  const urls = [URL_CONV, ...PROXIES.map(fn => fn(URL_CONV))];
-
-  for (const url of urls) {
-    try {
-      const r = await fetch(url, { cache: 'no-store' });
-      if (!r.ok) continue;
-      const text = await r.text();
-      if (!text || text.length < 100) continue;
-
-      const parsed = processCSV(text);
-
-      // ✅ SÓ atualiza se os dados fizerem sentido (confirmados > 0)
-      if (parsed.confirmados > 0) {
-        current = parsed;
-        render(current);
-        setStatus('live');
-        return;
-      }
-      // Se veio zerado, ignora e tenta próximo
-    } catch(e) { continue; }
+  function badgePresenca(val) {
+    const v = norm(val);
+    if (v === 'Sim')           return '<span class="badge badge-green">Confirmado</span>';
+    if (v === 'Não')           return '<span class="badge badge-red">Não vai</span>';
+    if (v === 'Não respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
+    return '<span class="badge badge-amber">Sem resposta</span>';
   }
 
-  // Nenhum funcionou — mantém dados embutidos
-  setStatus('local');
-}
-
-function processCSV(text) {
-  const rows = parseCSV(text);
-  let confirmados=0, beberChopp=0, pagouChopp=0,
-      naoPagou=0, naoResponderam=0, naoVaoBeber=0;
-  const naoPagaram = [];
-
-  // Linha 0: título "CONVIDADOS"
-  // Linha 1: vazia
-  // Linha 2: cabeçalho (NOMES, PRESENÇA, VAI BEBER CHOPP?, PAGOU O CHOOP)
-  // Dados: a partir da linha 3
-  for (let i = 3; i < rows.length; i++) {
-    const r = rows[i];
-    const nome     = (r[2] || '').trim();
-    const presenca = norm(r[3] || '');
-    const chopp    = norm(r[4] || '');
-    const pagou    = norm(r[5] || '');
-
-    if (!nome) continue;
-
-    if (presenca === 'sim')                                      confirmados++;
-    if (presenca.includes('nao respondeu'))                      naoResponderam++;
-    if (chopp === 'sim')                                         beberChopp++;
-    if (chopp.includes('nao vai') || chopp.includes('nao vao')) naoVaoBeber++;
-    if (pagou === 'sim')                                         pagouChopp++;
-    if (pagou === 'nao') { naoPagou++; naoPagaram.push(nome); }
+  function badgePagou(val) {
+    const v = norm(val);
+    if (v === 'Sim')           return '<span class="badge badge-blue">Pago</span>';
+    if (v === 'Não')           return '<span class="badge badge-red">Pendente</span>';
+    if (v === 'Não respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
+    if (v === 'Não Vai beber') return '<span class="badge badge-gray">N/A</span>';
+    if (!v)                    return '<span class="badge badge-gray">—</span>';
+    return `<span class="badge badge-gray">${v}</span>`;
   }
 
-  return { confirmados, beberChopp, pagouChopp, naoPagou,
-           naoResponderam, naoVaoBeber,
-           totalGastos: BASE.totalGastos, naoPagaram };
-}
+  function badgeChopp(val) {
+    const v = norm(val);
+    if (v === 'Sim')           return '<span class="badge badge-green">Sim</span>';
+    if (v === 'Não')           return '<span class="badge badge-red">Não bebe</span>';
+    if (v === 'Não Vai beber') return '<span class="badge badge-red">Não bebe</span>';
+    if (v === 'Não respondeu') return '<span class="badge badge-amber">Sem resposta</span>';
+    return '<span class="badge badge-gray">—</span>';
+  }
 
-function parseCSV(text) {
-  const rows = [];
-  for (const line of text.replace(/\r/g,'').split('\n')) {
-    if (!line.trim()) continue;
-    const cols=[]; let cur='', q=false;
-    for (const c of line) {
-      if (c==='"'){q=!q;}
-      else if (c===','&&!q){cols.push(cur.trim());cur='';}
-      else cur+=c;
+  function setFiltro(f) {
+    filtroAtual = f;
+    document.querySelectorAll('[data-f]').forEach(el => el.classList.toggle('active', el.dataset.f === f));
+    renderTabela();
+  }
+
+  function renderTabela() {
+    const busca = (document.getElementById('search').value || '').toLowerCase().trim();
+    let dados = todos;
+
+    if      (filtroAtual === 'confirmados') dados = dados.filter(isConfirmado);
+    else if (filtroAtual === 'pendentes')   dados = dados.filter(isPendente);
+    else if (filtroAtual === 'pagaram')     dados = dados.filter(isPagou);
+    else if (filtroAtual === 'nao-pagaram') dados = dados.filter(isNaoPagou);
+    else if (filtroAtual === 'semchopp')    dados = dados.filter(isSemChopp);
+
+    if (busca) dados = dados.filter(r => norm(r[I_NOME]).toLowerCase().includes(busca));
+
+    const tbody = document.getElementById('tbody');
+    if (!dados.length) {
+      tbody.innerHTML = '<tr><td colspan="4" class="empty">Nenhum convidado encontrado</td></tr>';
+      return;
     }
-    cols.push(cur.trim());
-    rows.push(cols);
+
+    tbody.innerHTML = dados.map(r => `
+      <tr>
+        <td title="${norm(r[I_NOME])}">${norm(r[I_NOME]) || '—'}</td>
+        <td>${badgePresenca(r[I_PRESENCA])}</td>
+        <td>${badgePagou(r[I_PAGOU])}</td>
+        <td>${badgeChopp(r[I_CHOPP])}</td>
+      </tr>`).join('');
   }
-  return rows;
-}
 
-function norm(s) {
-  return (s||'').toString().trim().toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-}
+  async function loadData() {
+    document.getElementById('header-meta').textContent = 'Atualizando...';
 
-function render(d) {
-  document.getElementById('grid').innerHTML = `
-    <div class="card c-gold">
-      <span class="card-icon">🎊</span>
-      <div class="lbl">Convidados Confirmados</div>
-      <div class="val gold">${d.confirmados}</div>
-    </div>
-    <div class="card c-green">
-      <span class="card-icon">🍺</span>
-      <div class="lbl">Vão Beber Chopp</div>
-      <div class="val green">${d.beberChopp}</div>
-    </div>
-    <div class="card c-green">
-      <span class="card-icon">✅</span>
-      <div class="lbl">Pagou o Chopp</div>
-      <div class="val green">${d.pagouChopp}</div>
-    </div>
-    <div class="card c-rose" onclick="openModal()">
-      <span class="card-icon">❌</span>
-      <div class="lbl">Não Pagou o Chopp</div>
-      <div class="val rose">${d.naoPagou}</div>
-      <div class="hint">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        ver lista completa
-      </div>
-    </div>
-    <div class="card c-ink">
-      <span class="card-icon">💬</span>
-      <div class="lbl">Não Responderam</div>
-      <div class="val">${d.naoResponderam}</div>
-    </div>
-    <div class="card c-ink">
-      <span class="card-icon">🚫</span>
-      <div class="lbl">Não Vão Beber Chopp</div>
-      <div class="val">${d.naoVaoBeber}</div>
-    </div>
-    <div class="card c-gold">
-      <span class="card-icon">💰</span>
-      <div class="lbl">Total Gastos</div>
-      <div class="val money">${d.totalGastos}</div>
-    </div>`;
-}
+    // range=C3:F999 → pula linhas 1-2 e colunas A-B, lê cabeçalho na linha 3
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}&range=C3:F999`;
 
-function setStatus(mode) {
-  const now = new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-  const badge = mode === 'live'
-    ? `<span class="live-badge"><span class="live-dot"></span> ao vivo</span>`
-    : `<span style="color:var(--gold);font-weight:500">📋 dados embutidos</span>`;
-  document.getElementById('status').innerHTML =
-    `${badge} &nbsp;·&nbsp; ${now} &nbsp;·&nbsp; <a href="#" onclick="location.reload();return false">↺ atualizar</a>`;
-}
+    try {
+      const res  = await fetch(url);
+      const text = await res.text();
+      const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
 
-function openModal() {
-  document.getElementById('msearch').value = '';
-  filterModal();
-  document.getElementById('overlay').classList.add('open');
-}
-function closeModal() { document.getElementById('overlay').classList.remove('open'); }
-function overlayClick(e) { if(e.target===document.getElementById('overlay')) closeModal(); }
+      // Primeira linha do range é o cabeçalho (NOMES, PRESENÇA, VAI BEBER CHOPP?, PAGOU O CHOOP)
+      // A API gviz usa ela automaticamente como header quando há label
+      const rows = json.table.rows
+        .map(r => r.c.map(cell => cell && cell.v !== null ? String(cell.v) : ''))
+        .filter(r => r[I_NOME].trim() !== '' && r[I_NOME].trim() !== 'NOMES');
 
-function filterModal() {
-  const lista = current.naoPagaram;
-  const q = norm(document.getElementById('msearch').value);
-  const filtered = q ? lista.filter(n => norm(n).includes(q)) : [...lista];
-  document.getElementById('msubtitle').textContent =
-    `${lista.length} pessoa${lista.length !== 1 ? 's' : ''} na lista`;
-  const listEl = document.getElementById('mlist');
-  if (!lista.length) {
-    listEl.innerHTML = '<div class="mempty">🎉 Ninguém deve chopp!<br>Todos pagaram.</div>';
-  } else if (!filtered.length) {
-    listEl.innerHTML = '<div class="mempty">Nenhum nome encontrado.</div>';
-  } else {
-    listEl.innerHTML = filtered
-      .map(n => `<div class="mitem"><div class="mdot"></div>${n}</div>`)
-      .join('');
+      todos = rows;
+
+      document.getElementById('sn-total').textContent       = rows.length;
+      document.getElementById('sn-confirmados').textContent = rows.filter(isConfirmado).length;
+      document.getElementById('sn-pendentes').textContent   = rows.filter(isPendente).length;
+      document.getElementById('sn-pagaram').textContent     = rows.filter(isPagou).length;
+      document.getElementById('sn-semchopp').textContent    = rows.filter(isSemChopp).length;
+
+      document.getElementById('header-meta').textContent = `${rows.length} convidados · sincronizado com a planilha`;
+      document.getElementById('footer-info').textContent = 'Última atualização: ' + new Date().toLocaleString('pt-BR');
+      renderTabela();
+    } catch (e) {
+      document.getElementById('header-meta').textContent = 'Erro ao carregar. Verifique o acesso à planilha.';
+      document.getElementById('tbody').innerHTML =
+        '<tr><td colspan="4" class="empty">Não foi possível carregar os dados.<br><small>Certifique-se que a planilha está com acesso "qualquer pessoa com o link pode visualizar".</small></td></tr>';
+    }
   }
-  document.getElementById('mcount').textContent =
-    filtered.length + (filtered.length !== lista.length ? ` / ${lista.length}` : '');
-}
+
+  loadData();
 </script>
 </body>
 </html>
