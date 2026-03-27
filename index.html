@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<button id="menu-btn" style="display:none">☰</button>
+<title>{ E } — Lucas Epifanio · Dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<!-- Cursor --->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Background --->
+<div class="bg-wrap">
+  <div class="bg-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- Loader --->
+<div id="loader">
+  <div class="loader-logo">{ E }</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-pct" id="lPct">0%</div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">{ E }</a>
+  <ul class="nav-links">
+    <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> about</a></li>
+    <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i> skills</a></li>
+    <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> experience</a></li>
+    <li><a href="#projects" class="nav-link"><i class="fas fa-rocket"></i> projects</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta"><i class="fas fa-terminal"></i> contact_me()</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="hero-wrap">
+    <div>
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        available for work
+      </div>
+      <h1 class="hero-name">
+        Lucas<br>
+        <span class="bracket">{ </span>Epifanio<span class="bracket"> }</span>
+      </h1>
+      <p class="hero-role">// <span>Full Stack Developer</span> &amp; Systems Builder</p>
+      <p class="hero-desc">Construindo sistemas, bots, APIs e interfaces que funcionam de verdade. Código limpo, soluções reais.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">Ver Projetos <i class="fas fa-arrow-right"></i></a>
+        <a href="#contact" class="btn-outline">Entre em Contato <i class="fas fa-terminal"></i></a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/lucasepifaniodev" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+        <a href="mailto:seuemail@email.com" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="logo-big">
+        <div class="logo-ring"></div>
+        <div class="logo-ring2"></div>
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#00e5ff"/>
+              <stop offset="100%" style="stop-color:#0080ff"/>
+            </linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <rect width="400" height="400" fill="#080b12"/>
+          <g opacity=".06" stroke="#00e5ff" stroke-width=".5">
+            <line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="300" x2="400" y2="300"/>
+            <line x1="100" y1="0" x2="100" y2="400"/><line x1="200" y1="0" x2="200" y2="400"/><line x1="300" y1="0" x2="300" y2="400"/>
+          </g>
+          <circle cx="200" cy="200" r="155" fill="url(#g)" opacity=".06"/>
+          <g stroke="url(#g)" stroke-width="1.5" opacity=".35" fill="none">
+            <polyline points="60,90 60,60 90,60"/><polyline points="310,60 340,60 340,90"/>
+            <polyline points="60,310 60,340 90,340"/><polyline points="340,310 340,340 310,340"/>
+          </g>
+          <g filter="url(#glow)">
+            <path d="M128,130 C108,130 100,140 100,158 L100,188 C100,200 92,205 80,205 C92,205 100,210 100,222 L100,252 C100,270 108,280 128,280" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M272,130 C292,130 300,140 300,158 L300,188 C300,200 308,205 320,205 C308,205 300,210 300,222 L300,252 C300,270 292,280 272,280" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+          </g>
+          <g filter="url(#glow)" fill="url(#g)">
+            <rect x="168" y="148" width="7" height="110" rx="2"/>
+            <rect x="168" y="148" width="58" height="7" rx="2"/>
+            <rect x="168" y="197" width="46" height="7" rx="2"/>
+            <rect x="168" y="251" width="58" height="7" rx="2"/>
+          </g>
+          <circle cx="200" cy="320" r="3" fill="#00e5ff" opacity=".5"/>
+          <circle cx="188" cy="320" r="2" fill="#00e5ff" opacity=".25"/>
+          <circle cx="212" cy="320" r="2" fill="#00e5ff" opacity=".25"/>
+        </svg>
+      </div>
+      <div class="float-badge badge-a"><i class="fab fa-node-js"></i> Node.js</div>
+      <div class="float-badge badge-b"><i class="fab fa-js"></i> JavaScript</div>
+      <div class="float-badge badge-c"><i class="fab fa-discord"></i> Discord Bots</div>
+      <div class="float-badge badge-d"><i class="fas fa-database"></i> SQL</div>
+      <div class="float-badge badge-e"><i class="fab fa-react"></i> React</div>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    scroll
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-wrap fade-in">
+    <div class="section-tag"><i class="fas fa-user-code"></i> about_me</div>
+    <h2 class="section-title">Quem sou <em>eu</em></h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div>
+        <p style="font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:20px">
+          Desenvolvedor Full Stack apaixonado por construir sistemas reais — desde bots Discord a APIs, automações e interfaces modernas. Trabalho com Node.js, JavaScript, e tenho experiência em deploy com Discloud e GitHub Actions.
+        </p>
+        <p style="font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:40px">
+          Minha identidade de marca é <code style="color:var(--cyan);font-family:'Fira Code',monospace">{ E }</code> — código, lógica e sistemas. Minimalista, forte e escalável.
+        </p>
+        <div class="about-stats">
+          <div class="stat"><div class="stat-n">15+</div><div class="stat-l"><i class="fas fa-folder-open"></i> Projetos</div></div>
+          <div class="stat"><div class="stat-n">3+</div><div class="stat-l"><i class="fas fa-calendar-alt"></i> Anos Dev</div></div>
+          <div class="stat"><div class="stat-n">∞</div><div class="stat-l"><i class="fab fa-git-alt"></i> Commits</div></div>
+        </div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-header">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span class="code-file">developer.js</span>
+        </div>
+        <div class="code-body">
+          <div><span class="ck">const</span> <span class="cv">developer</span> <span class="co">=</span> <span class="cm">{</span></div>
+          <div>&nbsp;&nbsp;<span class="cp">name</span><span class="co">:</span> <span class="cs">'Lucas Epifanio'</span>,</div>
+          <div>&nbsp;&nbsp;<span class="cp">brand</span><span class="co">:</span> <span class="cs">'{ E }'</span>,</div>
+          <div>&nbsp;&nbsp;<span class="cp">location</span><span class="co">:</span> <span class="cs">'Brazil 🇧🇷'</span>,</div>
+          <div>&nbsp;&nbsp;<span class="cp">stack</span><span class="co">:</span> [</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs">'Node.js'</span>, <span class="cs">'JavaScript'</span>,</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs">'Discord.js'</span>, <span class="cs">'GitHub'</span></div>
+          <div>&nbsp;&nbsp;],</div>
+          <div>&nbsp;&nbsp;<span class="cp">available</span><span class="co">:</span> <span class="ck">true</span></div>
+          <div><span class="cm">};</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-wrap fade-in">
+    <div class="section-tag"><i class="fas fa-code"></i> skills</div>
+    <h2 class="section-title">O que eu <em>domino</em></h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <div class="cat-title"><i class="fas fa-desktop"></i> Front-end</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">JavaScript</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" data-w="90"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">HTML / CSS</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" data-w="88"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">React</span><span class="skill-pct">72%</span></div><div class="skill-track"><div class="skill-fill" data-w="72"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">TypeScript</span><span class="skill-pct">65%</span></div><div class="skill-track"><div class="skill-fill" data-w="65"></div></div></div>
+      </div>
+      <div class="skill-cat">
+        <div class="cat-title"><i class="fas fa-server"></i> Back-end</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Node.js</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" data-w="92"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Discord.js</span><span class="skill-pct">95%</span></div><div class="skill-track"><div class="skill-fill" data-w="95"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Express</span><span class="skill-pct">78%</span></div><div class="skill-track"><div class="skill-fill" data-w="78"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">MongoDB</span><span class="skill-pct">70%</span></div><div class="skill-track"><div class="skill-fill" data-w="70"></div></div></div>
+      </div>
+      <div class="skill-cat">
+        <div class="cat-title"><i class="fas fa-tools"></i> Tools</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Git / GitHub</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" data-w="90"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Discloud</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" data-w="88"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">VS Code</span><span class="skill-pct">95%</span></div><div class="skill-track"><div class="skill-fill" data-w="95"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Figma</span><span class="skill-pct">60%</span></div><div class="skill-track"><div class="skill-fill" data-w="60"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="section-wrap fade-in">
+    <div class="section-tag"><i class="fas fa-briefcase"></i> experience</div>
+    <h2 class="section-title">Minha <em>trajetória</em></h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2024 — Present <span class="tl-badge">atual</span></div>
+        <h3 class="tl-title">Desenvolvedor Full Stack Freelance</h3>
+        <div class="tl-company"><i class="fas fa-terminal"></i> { E } — Independente</div>
+        <p class="tl-desc">Desenvolvimento de bots Discord avançados, sistemas de tickets, verificação por captcha, integração com GitHub API e GitHub Pages. Criação de sites e landing pages para clientes.</p>
+        <div class="tl-tags"><span class="tag">Node.js</span><span class="tag">Discord.js</span><span class="tag">GitHub API</span><span class="tag">HTML/CSS</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2022 — 2024</div>
+        <h3 class="tl-title">Desenvolvedor Front-end</h3>
+        <div class="tl-company"><i class="fas fa-building"></i> Projetos Pessoais &amp; Open Source</div>
+        <p class="tl-desc">Desenvolvimento de interfaces modernas, sistemas web e automações. Aprendizado de boas práticas de código, versionamento e deploy.</p>
+        <div class="tl-tags"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Git</span><span class="tag">CSS</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2021 — 2022</div>
+        <h3 class="tl-title">Início na Programação</h3>
+        <div class="tl-company"><i class="fas fa-code"></i> Self-taught Developer</div>
+        <p class="tl-desc">Primeiros passos com HTML, CSS e JavaScript. Criação dos primeiros projetos e descoberta da paixão por desenvolvimento de sistemas.</p>
+        <div class="tl-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="section-wrap fade-in">
+    <div class="section-tag"><i class="fas fa-rocket"></i> projects</div>
+    <h2 class="section-title">O que eu <em>construí</em></h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-img">
+          <div class="proj-links">
+            <a href="https://github.com/lucasepifaniodev" target="_blank" class="proj-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+          <i class="fab fa-discord"></i>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Dash Player Bot</h3>
+          <p class="proj-desc">Bot Discord completo com sistema de tickets bilíngue (PT/EN), verificação por captcha, transcripts automáticos via GitHub API.</p>
+          <div class="proj-tags"><span class="tag">Discord.js</span><span class="tag">Node.js</span><span class="tag">GitHub API</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-img">
+          <div class="proj-links">
+            <a href="https://github.com/lucasepifaniodev/dash-transcripts" target="_blank" class="proj-link"><i class="fab fa-github"></i></a>
+            <a href="https://lucasepifaniodev.github.io/dash-transcripts" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+          <i class="fas fa-scroll"></i>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Transcript System</h3>
+          <p class="proj-desc">Sistema de transcripts HTML gerados automaticamente ao fechar tickets, hospedados no GitHub Pages com página de busca por ID.</p>
+          <div class="proj-tags"><span class="tag">HTML/CSS</span><span class="tag">GitHub Pages</span><span class="tag">JS</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-img">
+          <div class="proj-links">
+            <a href="#" class="proj-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+          <i class="fas fa-globe"></i>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Portfólio { E }</h3>
+          <p class="proj-desc">Site portfólio pessoal com identidade visual futurista, estilo ciano/azul elétrico e marca { E }.</p>
+          <div class="proj-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-wrap fade-in">
+    <div class="section-tag"><i class="fas fa-envelope"></i> contact</div>
+    <h2 class="section-title">Vamos <em>conversar</em></h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div><div class="contact-label">E-mail</div><a href="mailto:seuemail@email.com" class="contact-val">seuemail@email.com</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-github"></i></div>
+          <div><div class="contact-label">GitHub</div><a href="https://github.com/lucasepifaniodev" target="_blank" class="contact-val">lucasepifaniodev</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fab fa-discord"></i></div>
+          <div><div class="contact-label">Discord</div><span class="contact-val">lucasepifanio</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><div class="contact-label">Localização</div><span class="contact-val">Brasil 🇧🇷</span></div>
+        </div>
+      </div>
+      <form id="contactForm">
+        <div class="form-group"><input type="text" class="form-input" placeholder="Nome" required></div>
+        <div class="form-group"><input type="email" class="form-input" placeholder="E-mail" required></div>
+        <div class="form-group"><input type="text" class="form-input" placeholder="Assunto" required></div>
+        <div class="form-group"><textarea class="form-input form-textarea" placeholder="Mensagem" required></textarea></div>
+        <button type="submit" class="btn-primary" style="border:none;cursor:pointer;width:100%;justify-content:center">
+          Enviar Mensagem <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <span class="footer-logo">{ E }</span>
+  <span class="footer-text">© 2025 Lucas Epifanio · Feito com código e café</span>
+  <div class="footer-socials">
+    <a href="https://github.com/lucasepifaniodev" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+  </div>
+</footer>
+
+<script src="/assets/js/script.js"></script>
+</body>
+</html>
